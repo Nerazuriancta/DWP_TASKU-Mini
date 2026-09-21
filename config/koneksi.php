@@ -1,13 +1,13 @@
 <?php
-$host = "localhost";
+$host = "aws-0-ap-northeast-1.pooler.supabase.com";
 $port = "5432";
-$dbname = "tasku_mini";
-$user = "postgres";
-$password = "12345";
+$dbname = "postgres";
+$user = "postgres.zbrpkebarphculvwxgmf";
+$password = "Nerazuriancta";
 
 try {
     $pdo = new PDO(
-        "pgsql:host=$host;port=$port;dbname=$dbname",
+        "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require",
         $user,
         $password
     );
