@@ -1,9 +1,10 @@
 <?php
-$host = "aws-0-ap-northeast-1.pooler.supabase.com";
-$port = "5432";
-$dbname = "postgres";
-$user = "postgres.zbrpkebarphculvwxgmf";
-$password = "Nerazuriancta";
+
+$host = getenv("DB_HOST");
+$port = getenv("DB_PORT");
+$dbname = getenv("DB_NAME");
+$user = getenv("DB_USER");
+$password = getenv("DB_PASSWORD");
 
 try {
     $pdo = new PDO(
