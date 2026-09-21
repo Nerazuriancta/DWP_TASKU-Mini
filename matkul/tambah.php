@@ -1,7 +1,5 @@
 <?php
 include __DIR__ . "/../config/koneksi.php";
-include __DIR__ . "/../includes/header.php";
-include __DIR__ . "/../includes/sidebar.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
