@@ -1,7 +1,7 @@
 <?php
-include "../config/koneksi.php";
-include "../includes/header.php";
-include "../includes/sidebar.php";
+include __DIR__ . "/../config/koneksi.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 
 $sql = "SELECT * FROM mata_kuliah ORDER BY id_matkul DESC";
 $stmt = $pdo->query($sql);
@@ -77,4 +77,4 @@ $data_matkul = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 </main>
-<?php include "../includes/footer.php"; ?>
+<?php include __DIR__ . "/../includes/footer.php"; ?>

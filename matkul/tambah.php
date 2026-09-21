@@ -1,5 +1,7 @@
 <?php
-include "../config/koneksi.php";
+include __DIR__ . "/../config/koneksi.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -61,4 +63,4 @@ include "../includes/sidebar.php";
 
     </div>
 </main>
-<?php include "../includes/footer.php"; ?>
+<?php include __DIR__ . "/../includes/footer.php"; ?>

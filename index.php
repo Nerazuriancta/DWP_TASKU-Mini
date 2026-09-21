@@ -1,5 +1,7 @@
 <?php
-include "config/koneksi.php";
+include __DIR__ . "/config/koneksi.php";
+include __DIR__ . "/includes/header.php";
+include __DIR__ . "/includes/sidebar.php";
 
 /* Menghitung total tugas */
 $sql = "SELECT COUNT(*) FROM tugas";
@@ -80,4 +82,4 @@ include "includes/sidebar.php";
         <?php endif; ?>
     </div>
 </main>
-<?php include "includes/footer.php";?>
+<?php include __DIR__ . "/includes/footer.php"; ?>

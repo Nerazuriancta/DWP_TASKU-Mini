@@ -1,6 +1,6 @@
 <?php
-include "../includes/header.php";
-include "../includes/sidebar.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 ?>
 
 <main class="main-content">
@@ -36,4 +36,4 @@ include "../includes/sidebar.php";
         </ul>
     </div>
 </main>
-<?php include "../includes/footer.php"; ?>
+<?php include __DIR__ . "/../includes/footer.php"; ?>

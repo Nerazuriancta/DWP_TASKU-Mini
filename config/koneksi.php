@@ -7,7 +7,7 @@ $user     = getenv("DB_USER");
 $password = getenv("DB_PASSWORD");
 
 if (!$host || !$dbname || !$user || !$password) {
-    die("Error: Variabel lingkungan database (DB_HOST, DB_NAME, DB_USER, DB_PASSWORD) belum dikonfigurasi.");
+    die("Error: Variabel lingkungan database belum dikonfigurasi.");
 }
 
 try {

@@ -1,7 +1,7 @@
 <?php
-include "../config/koneksi.php";
-include "../includes/header.php";
-include "../includes/sidebar.php";
+include __DIR__ . "/../config/koneksi.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 
 /* Mengambil semua data tugas */
 $sql = "SELECT tugas.*, mata_kuliah.nama_matkul
@@ -139,4 +139,4 @@ $data_matkul = $stmt_matkul->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 </main>
-<?php include "../includes/footer.php"; ?>
+<?php include __DIR__ . "/../includes/footer.php"; ?>

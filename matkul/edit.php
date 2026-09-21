@@ -1,5 +1,7 @@
 <?php
-include "../config/koneksi.php";
+include __DIR__ . "/../config/koneksi.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 
 $id = $_GET["id"];
 
@@ -78,4 +80,4 @@ include "../includes/sidebar.php";
         </form>
     </div>
 </main>
-<?php include "../includes/footer.php"; ?>
+<?php include __DIR__ . "/../includes/footer.php"; ?>

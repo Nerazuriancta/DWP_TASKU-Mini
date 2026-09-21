@@ -1,5 +1,5 @@
 <?php
-include "../config/koneksi.php";
+include __DIR__ . "/../config/koneksi.php";
 
 $id = $_GET["id"];
 $sql = "DELETE FROM tugas WHERE id_tugas = :id";
