@@ -57,8 +57,8 @@ $sql_matkul = "SELECT * FROM mata_kuliah ORDER BY nama_matkul ASC";
 $stmt_matkul = $pdo->query($sql_matkul);
 $data_matkul = $stmt_matkul->fetchAll(PDO::FETCH_ASSOC);
 
-include "../includes/header.php";
-include "../includes/sidebar.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 ?>
 
 <main class="main-content">

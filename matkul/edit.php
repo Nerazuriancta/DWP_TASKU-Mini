@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 
-include "../includes/header.php";
-include "../includes/sidebar.php";
+include __DIR__ . "/../includes/header.php";
+include __DIR__ . "/../includes/sidebar.php";
 ?>
 
 <main class="main-content">

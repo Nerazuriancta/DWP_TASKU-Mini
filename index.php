@@ -31,8 +31,6 @@ $sql = "SELECT tugas.*, mata_kuliah.nama_matkul
 $stmt = $pdo->query($sql);
 $deadline_terdekat = $stmt->fetch(PDO::FETCH_ASSOC);
 
-include "includes/header.php";
-include "includes/sidebar.php";
 ?>
 
 <main class="main-content">
