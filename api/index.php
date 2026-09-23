@@ -12,7 +12,7 @@ $basePath = dirname(__DIR__);
 
 /*
 |--------------------------------------------------------------------------
-| HELPER: SERVE FILE
+| HELPER - SERVE STATIC FILE
 |--------------------------------------------------------------------------
 */
 
@@ -27,16 +27,17 @@ function serveFile($file)
     );
 
     $mimeTypes = [
-        'css'  => 'text/css; charset=UTF-8',
-        'js'   => 'application/javascript; charset=UTF-8',
+        'html'  => 'text/html; charset=UTF-8',
+        'css'   => 'text/css; charset=UTF-8',
+        'js'    => 'application/javascript; charset=UTF-8',
 
-        'png'  => 'image/png',
-        'jpg'  => 'image/jpeg',
-        'jpeg' => 'image/jpeg',
-        'gif'  => 'image/gif',
-        'svg'  => 'image/svg+xml',
-        'webp' => 'image/webp',
-        'ico'  => 'image/x-icon',
+        'png'   => 'image/png',
+        'jpg'   => 'image/jpeg',
+        'jpeg'  => 'image/jpeg',
+        'gif'   => 'image/gif',
+        'svg'   => 'image/svg+xml',
+        'webp'  => 'image/webp',
+        'ico'   => 'image/x-icon',
 
         'woff'  => 'font/woff',
         'woff2' => 'font/woff2',
@@ -56,6 +57,29 @@ function serveFile($file)
     }
 
     return false;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ROOT WEBSITE
+|--------------------------------------------------------------------------
+*/
+
+if ($path === '/' || $path === '') {
+
+    $file = $basePath . '/index.html';
+
+    if (is_file($file)) {
+
+        header(
+            'Content-Type: text/html; charset=UTF-8'
+        );
+
+        readfile($file);
+
+        exit;
+    }
 }
 
 
@@ -85,19 +109,13 @@ if (str_starts_with($path, '/Jobsheet-7')) {
         $relativePath;
 
 
-    /*
-    | Static assets
-    */
-
+    // Static files
     if (serveFile($file)) {
         exit;
     }
 
 
-    /*
-    | PHP
-    */
-
+    // PHP
     if (
         strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
         is_file($file)
@@ -134,19 +152,13 @@ if (str_starts_with($path, '/Jobsheet-8')) {
         $relativePath;
 
 
-    /*
-    | Static assets
-    */
-
+    // Static files
     if (serveFile($file)) {
         exit;
     }
 
 
-    /*
-    | PHP
-    */
-
+    // PHP
     if (
         strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
         is_file($file)
@@ -159,11 +171,22 @@ if (str_starts_with($path, '/Jobsheet-8')) {
 
 /*
 |--------------------------------------------------------------------------
-| ROOT PHP
+| ROOT STATIC FILE
 |--------------------------------------------------------------------------
 */
 
 $file = $basePath . $path;
+
+if (serveFile($file)) {
+    exit;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ROOT PHP
+|--------------------------------------------------------------------------
+*/
 
 if (
     strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
