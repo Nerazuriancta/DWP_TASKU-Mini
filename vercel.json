@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.9.0"
+    }
+  },
+  "routes": [
+    {
+      "src": "/Jobsheet-7/assets/(.*)",
+      "dest": "/Jobsheet-7/assets/$1"
+    },
+    {
+      "src": "/Jobsheet-8/assets/(.*)",
+      "dest": "/Jobsheet-8/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
