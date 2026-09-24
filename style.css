@@ -1,368 +1,65 @@
-/* =========================
-   DASAR
-========================= */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: Arial, sans-serif;
-    background: #f8fbff;
-    color: #183153;
+    background-color: #f4f6ff;
+    color: #252a3a;
 }
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
 
 /* =========================
-   SIDEBAR
+   CONTAINER
 ========================= */
 
-.sidebar {
-    width: 220px;
-    height: 100vh;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    background: #ffffff;
-
-    border-right: 1px solid #e3ebf5;
-
-    padding: 25px 18px;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-
-    color: #163a70;
-
-    margin-bottom: 50px;
-}
-
-.logo span {
-    color: #3285e8;
-}
-
-.sidebar nav {
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.sidebar nav a {
-    padding: 12px 15px;
-
-    border-radius: 10px;
-
-    color: #65758b;
-
-    font-size: 14px;
-
-    transition: 0.3s;
-}
-
-.sidebar nav a span {
-    margin-right: 10px;
-}
-
-.sidebar nav a:hover,
-.sidebar nav a.active {
-    background: #eaf4ff;
-
-    color: #1976df;
-}
-
-.sidebar-bottom {
-    margin-top: auto;
-}
-
-.sidebar-bottom a {
-    color: #63738a;
-
-    font-size: 13px;
-}
-
-
-/* =========================
-   MAIN
-========================= */
-
-.main-content {
-    margin-left: 220px;
-
-    min-height: 100vh;
-}
-
-
-/* =========================
-   TOPBAR
-========================= */
-
-.topbar {
-    height: 70px;
-
-    padding: 0 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background: white;
-
-    border-bottom: 1px solid #e3ebf5;
-}
-
-.topbar-title {
-    color: #6d7c8f;
-
-    font-size: 13px;
-}
-
-.profile {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.profile strong {
-    display: block;
-
-    font-size: 13px;
-}
-
-.profile small {
-    color: #8b99aa;
-
-    font-size: 11px;
-}
-
-.avatar {
-    width: 35px;
-    height: 35px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #3285e8;
-
-    color: white;
-
-    border-radius: 50%;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    max-width: 1100px;
-
-    min-height: 500px;
-
+.container {
+    width: 90%;
+    max-width: 900px;
     margin: auto;
-
-    padding: 80px 50px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    align-items: center;
-
-    gap: 50px;
-}
-
-.hero-text .label {
-    color: #3184e7;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    letter-spacing: 1.5px;
-}
-
-.hero h1 {
-    font-size: 56px;
-
-    line-height: 1.1;
-
-    margin: 18px 0;
-
-    color: #183b70;
-}
-
-.description {
-    max-width: 500px;
-
-    color: #6c7c90;
-
-    line-height: 1.7;
-}
-
-.button {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    padding: 12px 20px;
-
-    background: #3285e8;
-
-    color: white;
-
-    border-radius: 9px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.button:hover {
-    background: #216fc9;
-
-    transform: translateY(-2px);
+    padding: 50px 0;
 }
 
 
 /* =========================
-   HERO CODE
+   HEADER
 ========================= */
 
-.hero-image {
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.code-box {
-    width: 310px;
-    height: 260px;
-
-    background: white;
-
-    border: 1px solid #dce7f3;
-
-    border-radius: 18px;
-
-    box-shadow: 0 15px 40px rgba(40, 80, 120, 0.08);
-
-    overflow: hidden;
+.subtitle {
+    color: #536dfe;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
-.code-top {
-    height: 35px;
-
-    background: #eef5fc;
-
-    padding: 0 15px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-}
-
-.code-top span {
-    width: 8px;
-    height: 8px;
-
-    background: #b9c8d8;
-
-    border-radius: 50%;
-}
-
-.code-content {
-    height: calc(100% - 35px);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.code-content p {
-    color: #6f91b7;
-
-    font-family: monospace;
-}
-
-.code-content h2 {
-    font-size: 65px;
-
-    color: #3285e8;
-
-    margin: 5px 0;
-}
-
-
-/* =========================
-   JOBSHEET
-========================= */
-
-.jobsheet {
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 80px 50px;
-}
-
-.section-title {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: end;
-
-    margin-bottom: 35px;
-}
-
-.section-title h2 {
+.page-header h1 {
     font-size: 38px;
-
-    color: #183b70;
-
-    margin-top: 8px;
+    color: #20243a;
+    margin-bottom: 12px;
 }
 
-.section-title > p {
-    color: #8492a4;
+.header-description {
+    color: #74798c;
+    font-size: 15px;
+    line-height: 1.6;
+}
 
-    font-size: 14px;
 
-    max-width: 300px;
+/* =========================
+   JOBSHEET LIST
+========================= */
+
+.jobsheet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
 
@@ -370,192 +67,123 @@ a {
    JOBSHEET CARD
 ========================= */
 
-.jobsheet-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 15px;
-}
-
-.card {
-    min-height: 120px;
-
-    padding: 20px;
-
-    background: white;
-
-    border: 1px solid #e0e9f3;
-
-    border-radius: 14px;
-
-    display: grid;
-
-    grid-template-columns: 60px 1fr 30px;
-
+.jobsheet-card {
+    display: flex;
     align-items: center;
+    gap: 20px;
 
-    gap: 15px;
+    background-color: white;
 
-    box-shadow: 0 5px 20px rgba(50, 100, 150, 0.04);
+    padding: 22px;
 
-    transition: 0.3s;
+    border-radius: 16px;
+
+    box-shadow: 0 5px 18px rgba(70, 70, 120, 0.08);
+
+    transition: 0.2s;
 }
 
-.card:hover {
+.jobsheet-card:hover {
     transform: translateY(-3px);
 
-    border-color: #9ec8f5;
-
-    box-shadow: 0 10px 25px rgba(50, 100, 150, 0.1);
-}
-
-.number {
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    font-size: 17px;
-
-    font-weight: bold;
-}
-
-
-/* WARNA NOMOR */
-
-.blue {
-    background: #e5f2ff;
-    color: #247ddd;
-}
-
-.purple {
-    background: #eee8ff;
-    color: #7151d5;
-}
-
-.green {
-    background: #e4f8ef;
-    color: #249565;
-}
-
-.red {
-    background: #ffebeb;
-    color: #dd4b4b;
-}
-
-.orange {
-    background: #fff1df;
-    color: #db7a1d;
-}
-
-.bootstrap {
-    background: #eee8ff;
-    color: #7151d5;
-
-    font-size: 14px;
-}
-
-.card h3 {
-    color: #203b5e;
-
-    font-size: 17px;
-
-    margin-bottom: 4px;
-}
-
-.card p {
-    color: #8996a6;
-
-    font-size: 12px;
-}
-
-.arrow {
-    color: #7f91a7;
-
-    font-size: 20px;
+    box-shadow: 0 10px 25px rgba(70, 70, 120, 0.14);
 }
 
 
 /* =========================
-   ABOUT
+   NOMOR JOBSHEET
 ========================= */
 
-.about {
-    max-width: 1100px;
+.number {
+    width: 60px;
+    height: 60px;
 
-    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 80px 50px;
+    flex-shrink: 0;
 
-    border-top: 1px solid #e2eaf3;
+    background: linear-gradient(
+        135deg,
+        #536dfe,
+        #7c4dff
+    );
 
-    display: grid;
-
-    grid-template-columns: 0.7fr 1.3fr;
-
-    gap: 60px;
-}
-
-.about h2 {
-    color: #183b70;
-
-    font-size: 38px;
-
-    margin-top: 8px;
-}
-
-.about-box {
-    background: white;
-
-    border: 1px solid #e0e9f3;
+    color: white;
 
     border-radius: 14px;
 
-    padding: 25px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.about-box > p {
-    color: #738297;
 
-    line-height: 1.7;
+/* =========================
+   INFORMASI JOBSHEET
+========================= */
 
-    margin-bottom: 25px;
+.jobsheet-info {
+    flex: 1;
 }
 
-.info {
-    display: flex;
+.jobsheet-info h2 {
+    font-size: 19px;
 
-    flex-direction: column;
+    margin-bottom: 6px;
 
-    gap: 12px;
+    color: #292d42;
 }
 
-.info div {
-    display: flex;
+.topic {
+    color: #536dfe;
 
-    justify-content: space-between;
+    font-size: 14px;
 
-    padding-bottom: 10px;
+    font-weight: bold;
 
-    border-bottom: 1px solid #edf1f5;
+    margin-bottom: 8px;
 }
 
-.info span {
-    color: #8997a8;
+.description {
+    color: #74798c;
 
     font-size: 13px;
+
+    line-height: 1.6;
+
+    max-width: 600px;
 }
 
-.info strong {
-    font-size: 13px;
 
-    color: #29476b;
+/* =========================
+   TOMBOL
+========================= */
+
+.btn {
+    display: inline-block;
+
+    background-color: #536dfe;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background-color: #4055d6;
 }
 
 
@@ -564,17 +192,13 @@ a {
 ========================= */
 
 footer {
-    padding: 30px;
-
     text-align: center;
 
-    border-top: 1px solid #e3ebf5;
+    margin-top: 45px;
 
-    color: #8a98a9;
+    color: #85899c;
 
-    font-size: 12px;
-
-    background: white;
+    font-size: 13px;
 }
 
 
@@ -582,105 +206,48 @@ footer {
    RESPONSIVE
 ========================= */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 
-    .sidebar {
-        width: 100%;
+    .container {
+        width: 92%;
 
-        height: auto;
-
-        position: relative;
-
-        border-right: none;
-
-        border-bottom: 1px solid #e3ebf5;
+        padding: 30px 0;
     }
 
-    .logo {
-        margin-bottom: 20px;
+    .page-header h1 {
+        font-size: 30px;
     }
 
-    .sidebar nav {
-        flex-direction: row;
-    }
+    .jobsheet-card {
+        align-items: flex-start;
 
-    .sidebar-bottom {
-        display: none;
-    }
+        padding: 18px;
 
-    .main-content {
-        margin-left: 0;
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding: 60px 25px;
-
-        text-align: center;
-    }
-
-    .description {
-        margin: auto;
-    }
-
-    .hero-image {
-        display: none;
-    }
-
-    .jobsheet,
-    .about {
-        padding: 60px 25px;
-    }
-
-    .jobsheet-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        display: block;
-    }
-
-    .section-title > p {
-        margin-top: 15px;
-    }
-
-    .about {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media (max-width: 500px) {
-
-    .topbar {
-        padding: 0 20px;
-    }
-
-    .profile div:nth-child(2) {
-        display: none;
-    }
-
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    .card {
-        grid-template-columns: 50px 1fr 25px;
+        gap: 14px;
     }
 
     .number {
-        width: 42px;
-        height: 42px;
+        width: 50px;
+        height: 50px;
+
+        font-size: 15px;
     }
 
-    .bootstrap {
+    .jobsheet-info h2 {
+        font-size: 16px;
+    }
+
+    .topic {
+        font-size: 13px;
+    }
+
+    .description {
         font-size: 12px;
     }
 
-    .info div {
-        flex-direction: column;
+    .btn {
+        padding: 9px 12px;
 
-        gap: 4px;
+        font-size: 12px;
     }
 }
