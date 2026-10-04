@@ -14,9 +14,9 @@ async function muatDaftarBuku() {
         if (!res.ok) {
             throw new Error("Gagal mengambil data (status " + res.status + ")");
         }
-        const daftarBuku = await res.json();
+        const daftarBuku = await res.json(); //dipotong-potong biar masuk ke field nya di tabel
 
-        daftarBuku.forEach(function (buku) {
+        daftarBuku.forEach(function (buku) { //setelah passing lakukan looping function(buku)
             const tr = document.createElement("tr");
             tr.innerHTML =
                 "<td>" + buku.judul + "</td>" +
