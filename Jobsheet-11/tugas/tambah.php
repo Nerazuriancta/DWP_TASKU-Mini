@@ -1,5 +1,10 @@
 <?php
 require __DIR__ . "/../includes/auth.php";
+
+echo '<pre>';
+var_dump($_SESSION);
+exit;
+
 include __DIR__ . "/../includes/koneksi.php";
 
 
