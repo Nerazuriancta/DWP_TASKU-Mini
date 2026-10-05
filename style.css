@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+    background-color: #536dfe;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 20px;
+}
+
+header .identitas {
+    font-size: 15px;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+
+/* ================= SECTION ================= */
+
+section {
+    padding: 70px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 35px;
+    color: #2d3a8c;
+}
+
+
+/* ================= TENTANG ================= */
+
+.tentang {
+    background-color: white;
+}
+
+.tentang p {
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+    color: #555;
+    font-size: 17px;
+}
+
+
+/* ================= JOBSHEET ================= */
+
+.jobsheet-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #e1e4ec;
+}
+
+.card h3 {
+    color: #2d3a8c;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.card span {
+    display: inline-block;
+    background-color: #eef0ff;
+    color: #536dfe;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.card a {
+    display: block;
+    text-decoration: none;
+    background-color: #536dfe;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    border-radius: 6px;
+}
+
+.card a:hover {
+    background-color: #4055d6;
+}
+
+
+/* ================= TEKNOLOGI ================= */
+
+.teknologi {
+    background-color: white;
+}
+
+.teknologi-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.teknologi-list span {
+    background-color: #eef0ff;
+    color: #536dfe;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    background-color: #2d3a8c;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 800px) {
+
+    .jobsheet-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header h1 {
+        font-size: 34px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .jobsheet-container {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 60px 20px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    header p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+}
