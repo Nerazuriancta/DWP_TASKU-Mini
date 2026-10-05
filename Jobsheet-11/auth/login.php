@@ -1,35 +1,13 @@
 <?php
-
-require_once __DIR__ . '/../includes/session.php';
-require_once __DIR__ . '/../includes/helpers.php';
-require_once __DIR__ . '/../includes/csrf.php';
-
-/*
- * Menentukan halaman yang akan dibuka setelah login.
- * Jika tidak ada redirect, kembali ke dashboard.
- */
-$redirect = $_GET['redirect'] ?? '../index.php';
-
-/*
- * Validasi redirect agar tidak bisa diarahkan
- * ke website lain.
- */
-$redirectPath = parse_url($redirect, PHP_URL_PATH);
-
-if (
-    !$redirectPath ||
-    str_starts_with($redirect, '//') ||
-    preg_match('/^[a-z][a-z0-9+.-]*:/i', $redirect) ||
-    strpos($redirectPath, '..') !== false
-) {
-    $redirect = '../index.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-/*
- * Kalau user sudah login, langsung menuju halaman tujuan.
- */
+require __DIR__ . '/../includes/csrf.php';
+require __DIR__ . '/../includes/helpers.php';
+
 if (isset($_SESSION['user_id'])) {
-    header('Location: ' . $redirect);
+    header('Location: ../index.php');
     exit;
 }
 
@@ -39,11 +17,9 @@ unset($_SESSION['flash']);
 
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Login | TASKU-Mini</title>
 
     <link rel="stylesheet" href="../assets/style.css">
@@ -212,15 +188,7 @@ unset($_SESSION['flash']);
         <?php endif; ?>
 
         <form class="auth-form" method="post" action="proses_login.php">
-
             <?= csrf_field() ?>
-
-            <!-- Menyimpan halaman tujuan setelah login -->
-            <input
-                type="hidden"
-                name="redirect"
-                value="<?= e($redirect) ?>"
-            >
 
             <div class="form-group">
                 <label for="username">Username</label>

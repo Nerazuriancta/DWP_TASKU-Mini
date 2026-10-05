@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../includes/auth.php";
+require __DIR__ . "/../includes/csrf.php";
 include __DIR__ . "/../includes/koneksi.php";
 
 include __DIR__ . "/../includes/header.php";
@@ -9,7 +10,7 @@ include __DIR__ . "/../includes/sidebar.php";
 <main class="main-content">
 
     <?php $flash = $_SESSION["flash"] ?? null; unset($_SESSION["flash"]); ?>
-<?php if ($flash): ?><p class="flash flash-<?= e($flash["type"]) ?>"><?= e($flash["pesan"]) ?></p><?php endif; ?>
+<?php if ($flash): ?><p class="flash flash-<?= htmlspecialchars($flash["type"]) ?>"><?= htmlspecialchars($flash["pesan"]) ?></p><?php endif; ?>
 
 <div class="page-header">
         <h1>Tambah Mata Kuliah</h1>

@@ -1,8 +1,10 @@
 <?php
 require __DIR__ . "/../includes/auth.php";
+require __DIR__ . "/../includes/csrf.php";
 include __DIR__ . "/../includes/koneksi.php";
 
-$id = $_GET["id"];
+$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+if ($id === false || $id <= 0) { die("ID mata kuliah tidak valid."); }
 
 $sql = "SELECT * FROM mata_kuliah WHERE id_matkul = :id";
 $stmt = $pdo->prepare($sql);
@@ -21,7 +23,7 @@ include __DIR__ . "/../includes/sidebar.php";
 <main class="main-content">
 
     <?php $flash = $_SESSION["flash"] ?? null; unset($_SESSION["flash"]); ?>
-<?php if ($flash): ?><p class="flash flash-<?= e($flash["type"]) ?>"><?= e($flash["pesan"]) ?></p><?php endif; ?>
+<?php if ($flash): ?><p class="flash flash-<?= htmlspecialchars($flash["type"]) ?>"><?= htmlspecialchars($flash["pesan"]) ?></p><?php endif; ?>
 
 <div class="page-header">
         <h1>Edit Mata Kuliah</h1>
@@ -31,20 +33,20 @@ include __DIR__ . "/../includes/sidebar.php";
     <div class="form-container">
         <form method="POST" action="proses_edit.php">
             <?= csrf_field() ?>
-            <input type="hidden" name="id" value="<?= e($id) ?>">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
             <div class="form-group">
                 <label>Nama Mata Kuliah *</label>
-                <input type="text" name="nama_matkul" value="<?= e($matkul["nama_matkul"]) ?>" required>
+                <input type="text" name="nama_matkul" value="<?= htmlspecialchars($matkul["nama_matkul"]) ?>" required>
             </div>
 
             <div class="form-group">
                 <label>Dosen</label>
-                <input type="text" name="dosen" value="<?= e($matkul["dosen"] ?? "") ?>">
+                <input type="text" name="dosen" value="<?= htmlspecialchars($matkul["dosen"] ?? "") ?>">
             </div>
 
             <div class="form-group">
                 <label>Kelas</label>
-                <input type="text" name="kelas" value="<?= e($matkul["kelas"] ?? "") ?>">
+                <input type="text" name="kelas" value="<?= htmlspecialchars($matkul["kelas"] ?? "") ?>">
             </div>
 
             <div class="form-actions">

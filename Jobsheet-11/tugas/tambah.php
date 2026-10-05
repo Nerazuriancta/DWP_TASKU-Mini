@@ -1,11 +1,13 @@
 <?php
 require __DIR__ . "/../includes/auth.php";
+require __DIR__ . "/../includes/csrf.php";
 include __DIR__ . "/../includes/koneksi.php";
 
 
 /* Mengambil data mata kuliah untuk pilihan form */
 $sql_matkul = "SELECT * FROM mata_kuliah ORDER BY nama_matkul ASC";
-$stmt_matkul = $pdo->query($sql_matkul);
+$stmt_matkul = $pdo->prepare($sql_matkul);
+$stmt_matkul->execute();
 $data_matkul = $stmt_matkul->fetchAll(PDO::FETCH_ASSOC);
 
 include __DIR__ . "/../includes/header.php";
@@ -14,7 +16,7 @@ include __DIR__ . "/../includes/sidebar.php";
 
 <main class="main-content">
     <?php $flash = $_SESSION["flash"] ?? null; unset($_SESSION["flash"]); ?>
-<?php if ($flash): ?><p class="flash flash-<?= e($flash["type"]) ?>"><?= e($flash["pesan"]) ?></p><?php endif; ?>
+<?php if ($flash): ?><p class="flash flash-<?= htmlspecialchars($flash["type"]) ?>"><?= htmlspecialchars($flash["pesan"]) ?></p><?php endif; ?>
 
 <div class="page-header">
         <h1>Tambah Tugas</h1>
@@ -37,7 +39,7 @@ include __DIR__ . "/../includes/sidebar.php";
 
                     <?php foreach ($data_matkul as $matkul): ?>
                         <option value="<?= $matkul["id_matkul"] ?>">
-                            <?= e($matkul["nama_matkul"]) ?>
+                            <?= htmlspecialchars($matkul["nama_matkul"]) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

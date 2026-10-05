@@ -1,8 +1,10 @@
 <?php
 require __DIR__ . "/../includes/auth.php";
+require __DIR__ . "/../includes/csrf.php";
 include __DIR__ . "/../includes/koneksi.php";
 
-$id = $_GET["id"];
+$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+if ($id === false || $id <= 0) { die("ID tugas tidak valid."); }
 
 /* Mengambil data tugas */
 $sql = "SELECT * FROM tugas WHERE id_tugas = :id";
@@ -18,7 +20,8 @@ if (!$tugas) {
 /* Jika form disubmit */
 /* Mengambil data mata kuliah */
 $sql_matkul = "SELECT * FROM mata_kuliah ORDER BY nama_matkul ASC";
-$stmt_matkul = $pdo->query($sql_matkul);
+$stmt_matkul = $pdo->prepare($sql_matkul);
+$stmt_matkul->execute();
 $data_matkul = $stmt_matkul->fetchAll(PDO::FETCH_ASSOC);
 
 include __DIR__ . "/../includes/header.php";
@@ -28,7 +31,7 @@ include __DIR__ . "/../includes/sidebar.php";
 <main class="main-content">
 
     <?php $flash = $_SESSION["flash"] ?? null; unset($_SESSION["flash"]); ?>
-<?php if ($flash): ?><p class="flash flash-<?= e($flash["type"]) ?>"><?= e($flash["pesan"]) ?></p><?php endif; ?>
+<?php if ($flash): ?><p class="flash flash-<?= htmlspecialchars($flash["type"]) ?>"><?= htmlspecialchars($flash["pesan"]) ?></p><?php endif; ?>
 
 <div class="page-header">
         <h1>Edit Tugas</h1>
@@ -39,11 +42,11 @@ include __DIR__ . "/../includes/sidebar.php";
 
         <form method="POST" action="proses_edit.php">
             <?= csrf_field() ?>
-            <input type="hidden" name="id" value="<?= e($id) ?>">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
 
             <div class="form-group">
                 <label>Nama Tugas *</label>
-                <input type="text" name="nama_tugas" value="<?= e($tugas["nama_tugas"]) ?>" required>
+                <input type="text" name="nama_tugas" value="<?= htmlspecialchars($tugas["nama_tugas"]) ?>" required>
             </div>
 
             <div class="form-group">
@@ -53,7 +56,7 @@ include __DIR__ . "/../includes/sidebar.php";
                     <?php foreach ($data_matkul as $matkul): ?>
 
                         <option value="<?= $matkul["id_matkul"] ?>" <?= $tugas["id_matkul"] == $matkul["id_matkul"] ? "selected" : "" ?>>
-                            <?= e($matkul["nama_matkul"]) ?>
+                            <?= htmlspecialchars($matkul["nama_matkul"]) ?>
                         </option>
                     <?php endforeach; ?>
 
@@ -64,13 +67,13 @@ include __DIR__ . "/../includes/sidebar.php";
                 <label>Deskripsi</label>
 
                 <textarea name="deskripsi" rows="4">
-                    <?= e($tugas["deskripsi"] ?? "") ?>
+                    <?= htmlspecialchars($tugas["deskripsi"] ?? "") ?>
                 </textarea>
             </div>
 
             <div class="form-group">
                 <label>Deadline *</label>
-                <input type="date" name="deadline" value="<?= e($tugas["deadline"]) ?>" required>
+                <input type="date" name="deadline" value="<?= htmlspecialchars($tugas["deadline"]) ?>" required>
             </div>
 
             <div class="form-group">
@@ -112,7 +115,7 @@ include __DIR__ . "/../includes/sidebar.php";
                 <label>Catatan</label>
 
                 <textarea name="catatan" rows="3">
-                    <?= e($tugas["catatan"] ?? "") ?>
+                    <?= htmlspecialchars($tugas["catatan"] ?? "") ?>
                 </textarea>
             </div>
 

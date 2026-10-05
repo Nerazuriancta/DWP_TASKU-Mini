@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../includes/helpers.php';
-require_once __DIR__ . '/../includes/csrf.php';
+require __DIR__ . '/../includes/csrf.php';
+require __DIR__ . '/../includes/helpers.php';
 
 if (isset($_SESSION['user_id'])) {
     header('Location: ../index.php');
@@ -238,7 +238,7 @@ unset($_SESSION['flash']);
 </main>
 
 <footer class="auth-footer">
-    &copy; 2026 TASKU-Mini — Jobsheet 10
+    &copy; 2026 TASKU-Mini — Jobsheet 11
 </footer>
 
 </body>
