@@ -18,7 +18,7 @@ $password = $_POST['password'] ?? '';
  * Mengambil halaman tujuan setelah login.
  * Jika tidak ada, kembali ke dashboard.
  */
-$redirect = $_POST['redirect'] ?? '../index.php';
+$redirect = $_POST['redirect'] ?? '/Jobsheet-11/index.php';
 
 /*
  * Validasi redirect agar tidak bisa diarahkan
@@ -32,7 +32,7 @@ if (
     preg_match('/^[a-z][a-z0-9+.-]*:/i', $redirect) ||
     strpos($redirectPath, '..') !== false
 ) {
-    $redirect = '../index.php';
+    $redirect = '/Jobsheet-11/index.php';
 }
 
 /*
