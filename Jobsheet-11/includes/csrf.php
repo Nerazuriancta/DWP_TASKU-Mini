@@ -1,5 +1,6 @@
 <?php
-// Proteksi CSRF dasar berbasis token per-session.
+require_once __DIR__ . '/session.php';
+
 function csrf_token()
 {
     if (empty($_SESSION['csrf_token'])) {

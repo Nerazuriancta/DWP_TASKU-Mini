@@ -73,3 +73,7 @@ TASKU-Mini Jobsheet 11 telah diperkuat dengan:
 - Password hashing dengan `password_hash()`.
 
 Hardening ini tidak menambahkan modul baru pada TASKU-Mini; perubahan hanya berfokus pada keamanan aplikasi yang sudah ada.
+
+### Catatan deployment Vercel
+
+Session login menggunakan PHP session yang disimpan di PostgreSQL (`tasku_sessions`), bukan penyimpanan file lokal server. Hal ini menjaga session tetap terbaca ketika request berikutnya ditangani oleh instance serverless yang berbeda. `session_regenerate_id(true)` tetap dijalankan setelah login berhasil.

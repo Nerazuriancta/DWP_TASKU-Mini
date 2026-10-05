@@ -1,11 +1,7 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+require __DIR__ . '/../includes/session.php';
 require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/helpers.php';
-
 if (isset($_SESSION['user_id'])) {
     header('Location: ../index.php');
     exit;

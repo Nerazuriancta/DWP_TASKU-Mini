@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 require __DIR__ . '/../includes/koneksi.php';
 include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/sidebar.php';
