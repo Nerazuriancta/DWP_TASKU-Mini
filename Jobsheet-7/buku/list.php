@@ -29,7 +29,7 @@ $daftarBuku = $_SESSION['buku'] ?? [];
                         <th>Aksi</th>
                     </tr>
                 </thead>
-            </table>
+
             <tbody>
                 <?php if (empty($daftarBuku)): ?>
                     <tr>
@@ -50,6 +50,7 @@ $daftarBuku = $_SESSION['buku'] ?? [];
                         <?php endforeach; ?>
                     <?php endif; ?>
             </tbody>
+            </table>
         </div>
     </section>
 <?php include __DIR__. '/../includes/footer.php'; ?>
