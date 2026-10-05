@@ -1,15 +1,11 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-require_once __DIR__ . '/../includes/csrf.php';
+require_once __DIR__ . '/../includes/session.php';
 require_once __DIR__ . '/../includes/helpers.php';
+require_once __DIR__ . '/../includes/csrf.php';
+require_once __DIR__ . '/../includes/koneksi.php';
 
 csrf_verify();
-
-require_once __DIR__ . '/../includes/koneksi.php';
 
 $username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
