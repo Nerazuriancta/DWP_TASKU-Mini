@@ -10,11 +10,9 @@ $path = urldecode($path);
 $basePath = dirname(__DIR__);
 
 
-/*
-|--------------------------------------------------------------------------
-| HELPER - SERVE STATIC FILE
-|--------------------------------------------------------------------------
-*/
+/* =========================
+   HELPER - SERVE STATIC FILE
+========================= */
 
 function serveFile($file)
 {
@@ -30,7 +28,6 @@ function serveFile($file)
         'html'  => 'text/html; charset=UTF-8',
         'css'   => 'text/css; charset=UTF-8',
         'js'    => 'application/javascript; charset=UTF-8',
-
         'png'   => 'image/png',
         'jpg'   => 'image/jpeg',
         'jpeg'  => 'image/jpeg',
@@ -38,7 +35,6 @@ function serveFile($file)
         'svg'   => 'image/svg+xml',
         'webp'  => 'image/webp',
         'ico'   => 'image/x-icon',
-
         'woff'  => 'font/woff',
         'woff2' => 'font/woff2',
         'ttf'   => 'font/ttf'
@@ -47,12 +43,10 @@ function serveFile($file)
     if (isset($mimeTypes[$extension])) {
 
         header(
-            'Content-Type: ' .
-            $mimeTypes[$extension]
+            'Content-Type: ' . $mimeTypes[$extension]
         );
 
         readfile($file);
-
         exit;
     }
 
@@ -60,11 +54,9 @@ function serveFile($file)
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| ROOT WEBSITE
-|--------------------------------------------------------------------------
-*/
+/* =========================
+   ROOT WEBSITE
+========================= */
 
 if ($path === '/' || $path === '') {
 
@@ -77,103 +69,58 @@ if ($path === '/' || $path === '') {
         );
 
         readfile($file);
-
         exit;
     }
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| JOBSHEET 7
-|--------------------------------------------------------------------------
-*/
+/* =========================
+   SEMUA JOBSHEET
+========================= */
 
-if (str_starts_with($path, '/Jobsheet-7')) {
+if (preg_match('#^/Jobsheet-[^/]+(?:/.*)?$#', $path)) {
 
-    $relativePath = substr(
-        $path,
-        strlen('/Jobsheet-7')
-    );
+    $relativePath = $path;
 
-    if (
-        $relativePath === '' ||
-        $relativePath === '/'
-    ) {
-        $relativePath = '/index.php';
+    $file = $basePath . $relativePath;
+
+    /*
+     * Kalau URL hanya:
+     * /Jobsheet-11/
+     *
+     * maka arahkan ke:
+     * /Jobsheet-11/index.php
+     */
+
+    if (is_dir($file)) {
+
+        $file = rtrim($file, '/') . '/index.php';
     }
 
-    $file =
-        $basePath .
-        '/Jobsheet-7' .
-        $relativePath;
 
+    /* Static file */
 
-    // Static files
     if (serveFile($file)) {
         exit;
     }
 
 
-    // PHP
+    /* PHP file */
+
     if (
         strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
         is_file($file)
     ) {
+
         require $file;
         exit;
     }
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| JOBSHEET 8
-|--------------------------------------------------------------------------
-*/
-
-if (str_starts_with($path, '/Jobsheet-8')) {
-
-    $relativePath = substr(
-        $path,
-        strlen('/Jobsheet-8')
-    );
-
-    if (
-        $relativePath === '' ||
-        $relativePath === '/'
-    ) {
-        $relativePath = '/index.php';
-    }
-
-    $file =
-        $basePath .
-        '/Jobsheet-8' .
-        $relativePath;
-
-
-    // Static files
-    if (serveFile($file)) {
-        exit;
-    }
-
-
-    // PHP
-    if (
-        strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
-        is_file($file)
-    ) {
-        require $file;
-        exit;
-    }
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| ROOT STATIC FILE
-|--------------------------------------------------------------------------
-*/
+/* =========================
+   ROOT STATIC FILE
+========================= */
 
 $file = $basePath . $path;
 
@@ -182,26 +129,23 @@ if (serveFile($file)) {
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| ROOT PHP
-|--------------------------------------------------------------------------
-*/
+/* =========================
+   ROOT PHP
+========================= */
 
 if (
     strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
     is_file($file)
 ) {
+
     require $file;
     exit;
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| 404
-|--------------------------------------------------------------------------
-*/
+/* =========================
+   404
+========================= */
 
 http_response_code(404);
 
