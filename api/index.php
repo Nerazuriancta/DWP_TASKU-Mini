@@ -41,7 +41,6 @@ function serveFile($file)
     ];
 
     if (isset($mimeTypes[$extension])) {
-
         header(
             'Content-Type: ' . $mimeTypes[$extension]
         );
@@ -84,34 +83,37 @@ if (preg_match('#^/Jobsheet-[^/]+(?:/.*)?$#', $path)) {
 
     $file = $basePath . $relativePath;
 
+
     /*
-     * Kalau URL hanya:
+     * Jika URL adalah:
      * /Jobsheet-11/
      *
-     * maka arahkan ke:
+     * maka buka:
      * /Jobsheet-11/index.php
      */
 
     if (is_dir($file)) {
-
         $file = rtrim($file, '/') . '/index.php';
     }
 
 
-    /* Static file */
+    /* =========================
+       STATIC FILE
+    ========================= */
 
     if (serveFile($file)) {
         exit;
     }
 
 
-    /* PHP file */
+    /* =========================
+       PHP FILE
+    ========================= */
 
     if (
         strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
         is_file($file)
     ) {
-
         require $file;
         exit;
     }
@@ -137,7 +139,6 @@ if (
     strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php' &&
     is_file($file)
 ) {
-
     require $file;
     exit;
 }
