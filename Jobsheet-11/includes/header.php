@@ -28,4 +28,3 @@ $sudahLogin = isset($_SESSION['user_id']);
         <?php endif; ?>
     </div>
 </header>
-<main>
