@@ -1,4 +1,3 @@
-</main>
 <footer>
     <p>&copy; 2026 TASKU-Mini &mdash; Jobsheet 11</p>
 </footer>
