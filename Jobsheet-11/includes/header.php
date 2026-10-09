@@ -2,10 +2,12 @@
 require_once __DIR__ . '/session.php';
 require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/csrf.php';
+
 $__root = dirname(__DIR__);
 $__scriptDir = dirname($_SERVER['SCRIPT_FILENAME']);
 $__rel = ltrim(str_replace('\\', '/', substr($__scriptDir, strlen($__root))), '/');
 $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
+
 $sudahLogin = isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
@@ -17,8 +19,21 @@ $sudahLogin = isset($_SESSION['user_id']);
     <link rel="stylesheet" href="<?php echo $base; ?>assets/style.css">
 </head>
 <body>
+
 <header class="top-header">
-    <div><h1>TASKU-Mini</h1><p>Task Management</p></div>
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >☰</button>
+
+    <div>
+        <h1>TASKU-Mini</h1>
+        <p>Task Management</p>
+    </div>
+
     <div class="auth-status">
         <?php if ($sudahLogin): ?>
             <span>Halo, <?php echo e($_SESSION['nama']); ?></span>
