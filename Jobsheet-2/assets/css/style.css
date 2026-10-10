@@ -1,4 +1,4 @@
-/* ===== Reset & Base ===== */
+/* == Reset & Base ==*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,7 +8,7 @@
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     color: #2b2b2b;
-    background-color: #f5f6f8;
+    background-color: #ddad9c;
     line-height: 1.5;
 }
 
@@ -21,15 +21,18 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ===== Header & Navbar (Flexbox) ===== */
+/* == Header & avbar ==*/
 header {
-    background-color: #1d5b8a;
+    background-color: #5a2e25;
     color: #fff;
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
@@ -47,7 +50,7 @@ header nav a {
     font-weight: 500;
 }
 
-/* ===== Main Layout ===== */
+/* == Main Layout ==*/
 main {
     max-width: 1000px;
     margin: 2rem auto;
@@ -59,15 +62,15 @@ section {
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(79, 61, 53, 0.8);
 }
 
 section h2 {
     margin-bottom: 1rem;
-    color: #1d5b8a;
+    color: #4f3d35;
 }
 
-/* ===== Kartu Statistik (CSS Grid) ===== */
+/* == Kartu Statistik (CSS GRID) == */
 main section:nth-of-type(2) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -79,25 +82,30 @@ main section:nth-of-type(2) h2 {
 }
 
 main section:nth-of-type(2) article {
-    background-color: #eef4fa;
+    background-color: #ebd7d4;
     border-radius: 8px;
     padding: 1.25rem;
     text-align: center;
 }
 
+main section:nth-of-type(2) article:hover {
+    background-color: #dbc4bc;
+    box-shadow: 0 1px 3px rgba(79, 61, 53, 0.8);
+}
+
 main section:nth-of-type(2) article h3 {
     font-size: 0.95rem;
-    color: #55677a;
+    color: #b46258;
     margin-bottom: 0.5rem;
 }
 
 main section:nth-of-type(2) article p {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1d5b8a;
+    color: #fca47c;
 }
 
-/* ===== Tabel ===== */
+/* == Tabel == */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -110,16 +118,16 @@ th, td {
 }
 
 thead {
-    background-color: #1d5b8a;
+    background-color: #5a2e25;
     color: #fff;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f7f9fb;
+    background-color: #f1efee;
 }
 
 tbody tr:hover {
-    background-color: #eef4fa;
+    background-color: #f7ebe3;
 }
 
 td button {
@@ -141,7 +149,7 @@ td button:last-of-type {
     color: #fff;
 }
 
-/* ===== Form ===== */
+/* == Form ==*/
 form p {
     margin-bottom: 1rem;
 }
@@ -153,8 +161,7 @@ form label {
     color: #444;
 }
 
-form input,
-form select {
+form input, form select {
     width: 100%;
     max-width: 400px;
     padding: 0.55rem 0.7rem;
@@ -164,7 +171,7 @@ form select {
 }
 
 form button[type="submit"] {
-    background-color: #1d5b8a;
+    background-color: #5a2e25;
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -174,13 +181,74 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #164869;
+    background-color: #954c1e;
 }
 
-/* ===== Footer ===== */
+/* == Footer ==*/
 footer {
     text-align: center;
     padding: 1.25rem;
-    color: #7a8794;
+    color: #b24f0d;
     font-size: 0.9rem;
+}
+
+/* ===== Tabel Responsif ===== */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* ===== Hamburger Menu (checkbox hack) ===== */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    font-size: 1.6rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ===== Responsive Breakpoints ===== */
+
+/* Tablet ke bawah */
+@media (max-width: 768px) {
+    main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    header {
+        position: relative;
+    }
+
+    .nav-toggle-label {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        width: 100%;
+        order: 3;
+        margin-top: 1rem;
+    }
+
+    .nav-toggle:checked ~ nav {
+        display: block;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    main section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+
+    form input, form select {
+        max-width: 100%;
+    }
 }
