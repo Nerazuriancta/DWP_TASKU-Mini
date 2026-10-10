@@ -147,6 +147,7 @@ section h2 {
 /* ================= FOOTER ================= */
 
 footer {
+    width: 100%;
     background-color: #2d3a8c;
     color: white;
     text-align: center;
