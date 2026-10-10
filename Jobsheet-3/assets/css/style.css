@@ -1,122 +1,76 @@
-/* ================= TEMA TASKU-MINI: COKELAT & PEACH ================= */
+/* ===== Reset & Base ===== */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --brown-dark: #5a2e25;
-    --brown: #704034;
-    --peach: #ddb09f;
-    --peach-light: #f0d9d4;
-    --peach-card: #edd7d3;
-    --coral: #c36c5b;
-    --coral-light: #ff9f78;
-    --text: #302722;
-    --muted: #6f625e;
-    --white: #ffffff;
-    --border: #e5d5cf;
-    --shadow: 0 2px 5px rgba(65, 35, 27, 0.18);
-}
-
-html {
-    min-height: 100%;
 }
 
 body {
-    min-height: 100vh;
     font-family: "Segoe UI", Arial, sans-serif;
-    color: var(--text);
-    background: var(--peach);
-    line-height: 1.6;
+    color: #2b2b2b;
+    background-color: #f5f6f8;
+    line-height: 1.5;
 }
 
 a {
-    color: var(--coral);
+    color: #1d5b8a;
     text-decoration: none;
-    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 a:hover {
-    color: var(--brown-dark);
     text-decoration: underline;
 }
 
-/* ================= HEADER & NAVBAR ================= */
+/* ===== Header & Navbar (Flexbox) ===== */
 header {
-    background: var(--brown-dark);
-    color: var(--white);
-    padding: 1.15rem 2rem;
+    background-color: #1d5b8a;
+    color: #fff;
+    padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.25rem;
     flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(50, 25, 20, 0.16);
 }
 
 header h1 {
-    color: var(--white);
-    font-size: 1.65rem;
-    line-height: 1.3;
-    font-weight: 750;
+    font-size: 1.4rem;
 }
 
 header nav ul {
     list-style: none;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 header nav a {
-    color: var(--white);
-    font-weight: 650;
-    font-size: 1rem;
+    color: #fff;
+    font-weight: 500;
 }
 
-header nav a:hover {
-    color: #ffd8c9;
-    text-decoration: none;
-}
-
-/* ================= MAIN & CONTENT CARDS ================= */
+/* ===== Main Layout ===== */
 main {
-    width: min(1100px, calc(100% - 40px));
-    margin: 2.5rem auto;
-    padding: 0;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
 }
 
 section {
-    background: var(--white);
-    border: 1px solid rgba(90, 46, 37, 0.12);
-    border-radius: 11px;
+    background-color: #fff;
+    border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: var(--shadow);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 section h2 {
     margin-bottom: 1rem;
-    color: var(--brown);
-    font-size: 1.55rem;
-    line-height: 1.35;
+    color: #1d5b8a;
 }
 
-section p {
-    margin-bottom: 0.6rem;
-}
-
-section p:last-child {
-    margin-bottom: 0;
-}
-
-/* ================= SUMMARY / STATISTICS ================= */
+/* ===== Kartu Statistik (CSS Grid) ===== */
 main section:nth-of-type(2) {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -125,172 +79,118 @@ main section:nth-of-type(2) h2 {
 }
 
 main section:nth-of-type(2) article {
-    background: var(--peach-card);
-    border: 0;
-    border-radius: 10px;
-    padding: 1.35rem 1rem;
+    background-color: #eef4fa;
+    border-radius: 8px;
+    padding: 1.25rem;
     text-align: center;
 }
 
 main section:nth-of-type(2) article h3 {
-    font-size: 1rem;
-    color: var(--coral);
-    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+    color: #55677a;
+    margin-bottom: 0.5rem;
 }
 
 main section:nth-of-type(2) article p {
     font-size: 1.8rem;
-    font-weight: 750;
-    color: var(--coral-light);
-    margin: 0;
+    font-weight: 700;
+    color: #1d5b8a;
 }
 
-/* ================= TABLES ================= */
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-}
-
+/* ===== Tabel ===== */
 table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--white);
 }
 
-th,
-td {
+th, td {
     text-align: left;
-    padding: 0.8rem 0.9rem;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid #e2e6ea;
 }
 
 thead {
-    background: var(--brown-dark);
-    color: var(--white);
+    background-color: #1d5b8a;
+    color: #fff;
 }
 
 tbody tr:nth-child(even) {
-    background: #fbf4f1;
+    background-color: #f7f9fb;
 }
 
 tbody tr:hover {
-    background: #f6e7e1;
-}
-
-td button,
-button,
-input[type="submit"] {
-    font: inherit;
+    background-color: #eef4fa;
 }
 
 td button {
-    padding: 0.4rem 0.75rem;
-    margin: 0.15rem 0.25rem 0.15rem 0;
-    border: 0;
-    border-radius: 5px;
+    padding: 0.35rem 0.7rem;
+    margin-right: 0.35rem;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 td button:first-of-type {
-    background: #d99a61;
-    color: var(--white);
+    background-color: #f0ad4e;
+    color: #fff;
 }
 
 td button:last-of-type {
-    background: #b95448;
-    color: var(--white);
+    background-color: #d9534f;
+    color: #fff;
 }
 
-/* ================= FORMS ================= */
+/* ===== Form ===== */
 form p {
     margin-bottom: 1rem;
 }
 
 form label {
     display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 650;
-    color: var(--brown);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    color: #444;
 }
 
 form input,
-form select,
-form textarea {
+form select {
     width: 100%;
-    max-width: 500px;
-    padding: 0.7rem 0.8rem;
-    border: 1px solid #d7c4bc;
-    border-radius: 6px;
-    background: #fffdfc;
-    color: var(--text);
-    font: inherit;
+    max-width: 400px;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
-form input:focus,
-form select:focus,
-form textarea:focus {
-    outline: 2px solid rgba(195, 108, 91, 0.22);
-    border-color: var(--coral);
-}
-
-form button[type="submit"],
-button[type="submit"],
-.btn,
-.button {
-    display: inline-block;
-    background: var(--brown-dark);
-    color: var(--white);
-    border: 0;
-    padding: 0.7rem 1.25rem;
-    border-radius: 6px;
-    font-weight: 650;
+form button[type="submit"] {
+    background-color: #1d5b8a;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
     cursor: pointer;
-    text-decoration: none;
 }
 
-form button[type="submit"]:hover,
-button[type="submit"]:hover,
-.btn:hover,
-.button:hover {
-    background: var(--brown);
-    color: var(--white);
-    text-decoration: none;
+form button[type="submit"]:hover {
+    background-color: #164869;
 }
 
-/* ================= FOOTER ================= */
+/* ===== Footer ===== */
 footer {
-    width: 100%;
     text-align: center;
     padding: 1.25rem;
-    background: var(--brown-dark);
-    color: #f8eae5;
+    color: #7a8794;
     font-size: 0.9rem;
-    margin-top: 2rem;
 }
 
-/* ================= VALIDATION & SEARCH ================= */
-.error {
-    display: block;
-    color: #b43c34;
-    font-size: 0.88rem;
-    margin-top: 0.25rem;
+/* ===== Tabel Responsif ===== */
+.table-responsive {
+    overflow-x: auto;
 }
 
-.search-box {
-    margin-bottom: 1rem;
-}
-
-.search-box input {
-    width: 100%;
-    max-width: 360px;
-    padding: 0.65rem 0.8rem;
-    border: 1px solid #d7c4bc;
-    border-radius: 6px;
-}
-
-/* ================= NAVIGATION TOGGLE ================= */
+/* ===== Hamburger Menu (checkbox hack) ===== */
 .nav-toggle {
     display: none;
 }
@@ -298,40 +198,23 @@ footer {
 .nav-toggle-label {
     display: none;
     font-size: 1.6rem;
-    color: var(--white);
-    background: transparent;
-    border: 0;
+    color: #fff;
     cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ===== Responsive Breakpoints ===== */
+
+/* Tablet ke bawah */
 @media (max-width: 768px) {
-    header {
-        padding: 1rem 1.25rem;
-    }
-
-    header nav ul {
-        gap: 0.9rem;
-    }
-
-    main {
-        width: min(100% - 28px, 1100px);
-        margin: 1.4rem auto;
-    }
-
     main section:nth-of-type(2) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 560px) {
+/* Mobile */
+@media (max-width: 480px) {
     header {
         position: relative;
-        align-items: center;
-    }
-
-    header h1 {
-        font-size: 1.35rem;
     }
 
     .nav-toggle-label {
@@ -342,47 +225,23 @@ footer {
         display: none;
         width: 100%;
         order: 3;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
     }
 
-    .nav-toggle:checked ~ nav,
-    header nav.nav-open {
+    .nav-toggle:checked ~ nav {
         display: block;
     }
 
     header nav ul {
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.75rem;
-    }
-
-    main {
-        width: calc(100% - 24px);
-        margin: 1rem auto;
-    }
-
-    section {
-        padding: 1.1rem;
-        border-radius: 9px;
-    }
-
-    section h2 {
-        font-size: 1.3rem;
     }
 
     main section:nth-of-type(2) {
         grid-template-columns: 1fr;
     }
 
-    form input,
-    form select,
-    form textarea {
+    form input, form select {
         max-width: 100%;
-    }
-
-    th,
-    td {
-        padding: 0.65rem;
-        white-space: nowrap;
     }
 }
