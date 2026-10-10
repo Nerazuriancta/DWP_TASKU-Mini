@@ -1,10 +1,227 @@
-<!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Handbook Jobsheet 6 — Data JSON & Fetch API</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header class="topbar"><a class="brand" href="index.html">TASKU-Mini <small>Web Development Handbook</small></a><a href="../index.html">Buka Portofolio ↗</a></header>
-<main class="wrap"><section class="hero"><div class="eyebrow">Handbook • Jobsheet 6 dari 6</div><h1>Data JSON & Fetch API</h1><p>Memisahkan data contoh dari HTML dan memuatnya secara dinamis menggunakan JavaScript.</p><div class="pills"><span class="btn">HTML + JavaScript + JSON</span><a href="index.html">Semua Jobsheet</a></div></section>
-<section class="section"><h2>Ringkasan materi</h2><p>Jobsheet 6 menggunakan file JSON sebagai sumber data buku dan anggota. File JavaScript mengambil data tersebut lalu mengisi tabel di halaman. Ini memperkenalkan pola pemisahan data dari tampilan.</p></section>
-<section class="section"><h2>Tujuan pembelajaran</h2><ul><li>Mengenali format JSON sebagai data terstruktur.</li><li>Membaca data dari data/buku.json dan data/anggota.json.</li><li>Menggunakan fetch() untuk mengambil file JSON.</li><li>Mengubah data menjadi baris tabel pada halaman.</li><li>Memahami bahwa permintaan fetch umumnya membutuhkan web server lokal.</li></ul></section>
-<section class="section"><h2>File dan bagian penting</h2><p>Gunakan folder <code>Jobsheet-6/</code> pada project untuk memeriksa implementasi yang dibahas di halaman ini.</p><div class="callout"><strong>Catatan praktik</strong><br>Jalankan melalui server lokal, bukan hanya membuka file HTML dengan file://. Fetch dapat diblokir atau berperilaku berbeda saat halaman dibuka langsung dari sistem berkas.</div></section>
-<section class="section"><h2>Langkah mencoba</h2><ol><li>Jalankan folder melalui server lokal, misalnya Laragon atau ekstensi Live Server.</li><li>Buka Jobsheet-6/buku/list.html dan Jobsheet-6/anggota/list.html melalui server.</li><li>Pastikan baris tabel terisi dari file JSON.</li><li>Jika gagal, periksa tab Network dan Console serta jalur file JSON.</li></ol></section>
-<section class="section"><h2>Checklist pemahaman</h2><ul><li>□ Saya dapat menjelaskan tujuan Jobsheet 6 dengan kata-kata sendiri.</li><li>□ Saya dapat menunjukkan file yang menjadi bagian utama materi ini.</li><li>□ Saya sudah mencoba halaman terkait dan memeriksa hasilnya di browser.</li></ul></section>
-<nav class="navrow"><a href="jobsheet5.html">← Jobsheet 5</a><a href="index.html">Kembali ke daftar ↑</a></nav></main><footer class="footer">TASKU-Mini • Handbook Jobsheet 1–6 • Tema #536dfe dan #7c4dff</footer></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Handbook Jobsheet 6 — Data JSON &amp; Fetch API</title>
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            TASKU-Mini
+            <small>Web Development Handbook</small>
+        </a>
+
+        <a href="../index.html">Buka Portofolio ↗</a>
+    </header>
+
+    <main class="wrap">
+
+        <section class="hero">
+            <div class="eyebrow">Handbook • Jobsheet 6 dari 6</div>
+
+            <h1>Data JSON &amp; Fetch API</h1>
+
+            <p>
+                Memisahkan data contoh dari HTML dan memuatnya
+                secara dinamis menggunakan JavaScript.
+            </p>
+
+            <div class="pills">
+                <span class="btn">HTML + JavaScript + JSON</span>
+                <a href="index.html">Semua Jobsheet</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Ringkasan materi</h2>
+
+            <p>
+                Jobsheet 6 menggunakan file JSON sebagai sumber data
+                buku dan anggota. File JavaScript mengambil data tersebut
+                lalu mengisi tabel di halaman. Ini memperkenalkan pola
+                pemisahan data dari tampilan.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Tujuan pembelajaran</h2>
+
+            <ul>
+                <li>Mengenali format JSON sebagai data terstruktur.</li>
+                <li>Membaca data dari data/buku.json dan data/anggota.json.</li>
+                <li>Menggunakan fetch() untuk mengambil file JSON.</li>
+                <li>Mengubah data menjadi baris tabel pada halaman.</li>
+                <li>Memahami bahwa permintaan fetch umumnya membutuhkan web server lokal.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>File dan bagian penting</h2>
+
+            <p>
+                Gunakan folder <code>Jobsheet-6/</code> pada project
+                untuk memeriksa implementasi yang dibahas di halaman ini.
+            </p>
+
+            <div class="callout">
+                <strong>Catatan praktik</strong>
+                <br>
+                Jalankan melalui server lokal, bukan hanya membuka file
+                HTML dengan file://. Fetch dapat diblokir atau berperilaku
+                berbeda saat halaman dibuka langsung dari sistem berkas.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Langkah mencoba</h2>
+
+            <ol>
+                <li>Jalankan folder melalui server lokal, misalnya Laragon atau ekstensi Live Server.</li>
+                <li>Buka Jobsheet-6/buku/list.html dan Jobsheet-6/anggota/list.html melalui server.</li>
+                <li>Pastikan baris tabel terisi dari file JSON.</li>
+                <li>Jika gagal, periksa tab Network dan Console serta jalur file JSON.</li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2>Checklist pemahaman</h2>
+
+            <ul>
+                <li>□ Saya dapat menjelaskan tujuan Jobsheet 6 dengan kata-kata sendiri.</li>
+                <li>□ Saya dapat menunjukkan file yang menjadi bagian utama materi ini.</li>
+                <li>□ Saya sudah mencoba halaman terkait dan memeriksa hasilnya di browser.</li>
+            </ul>
+        </section>
+
+        <nav class="navrow">
+            <a href="jobsheet5.html">← Jobsheet 5</a>
+            <a href="index.html">Kembali ke daftar ↑</a>
+        </nav>
+
+    </main>
+
+    <footer class="footer">
+        TASKU-Mini • Handbook Jobsheet 1–6 • Tema #536dfe dan #7c4dff
+    </footer>
+
+</body>
+</html>
+``````html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Handbook Jobsheet 6 — Data JSON &amp; Fetch API</title>
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            TASKU-Mini
+            <small>Web Development Handbook</small>
+        </a>
+
+        <a href="../index.html">Buka Portofolio ↗</a>
+    </header>
+
+    <main class="wrap">
+
+        <section class="hero">
+            <div class="eyebrow">Handbook • Jobsheet 6 dari 6</div>
+
+            <h1>Data JSON &amp; Fetch API</h1>
+
+            <p>
+                Memisahkan data contoh dari HTML dan memuatnya
+                secara dinamis menggunakan JavaScript.
+            </p>
+
+            <div class="pills">
+                <span class="btn">HTML + JavaScript + JSON</span>
+                <a href="index.html">Semua Jobsheet</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Ringkasan materi</h2>
+
+            <p>
+                Jobsheet 6 menggunakan file JSON sebagai sumber data
+                buku dan anggota. File JavaScript mengambil data tersebut
+                lalu mengisi tabel di halaman. Ini memperkenalkan pola
+                pemisahan data dari tampilan.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Tujuan pembelajaran</h2>
+
+            <ul>
+                <li>Mengenali format JSON sebagai data terstruktur.</li>
+                <li>Membaca data dari data/buku.json dan data/anggota.json.</li>
+                <li>Menggunakan fetch() untuk mengambil file JSON.</li>
+                <li>Mengubah data menjadi baris tabel pada halaman.</li>
+                <li>Memahami bahwa permintaan fetch umumnya membutuhkan web server lokal.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>File dan bagian penting</h2>
+
+            <p>
+                Gunakan folder <code>Jobsheet-6/</code> pada project
+                untuk memeriksa implementasi yang dibahas di halaman ini.
+            </p>
+
+            <div class="callout">
+                <strong>Catatan praktik</strong>
+                <br>
+                Jalankan melalui server lokal, bukan hanya membuka file
+                HTML dengan file://. Fetch dapat diblokir atau berperilaku
+                berbeda saat halaman dibuka langsung dari sistem berkas.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Langkah mencoba</h2>
+
+            <ol>
+                <li>Jalankan folder melalui server lokal, misalnya Laragon atau ekstensi Live Server.</li>
+                <li>Buka Jobsheet-6/buku/list.html dan Jobsheet-6/anggota/list.html melalui server.</li>
+                <li>Pastikan baris tabel terisi dari file JSON.</li>
+                <li>Jika gagal, periksa tab Network dan Console serta jalur file JSON.</li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2>Checklist pemahaman</h2>
+
+            <ul>
+                <li>□ Saya dapat menjelaskan tujuan Jobsheet 6 dengan kata-kata sendiri.</li>
+                <li>□ Saya dapat menunjukkan file yang menjadi bagian utama materi ini.</li>
+                <li>□ Saya sudah mencoba halaman terkait dan memeriksa hasilnya di browser.</li>
+            </ul>
+        </section>
+
+        <nav class="navrow">
+            <a href="jobsheet5.html">← Jobsheet 5</a>
+            <a href="index.html">Kembali ke daftar ↑</a>
+        </nav>
+
+    </main>
+
+    <footer class="footer">
+        TASKU-Mini • Handbook Jobsheet 1–6 • Tema #536dfe dan #7c4dff
+    </footer>
+
+</body>
+</html>

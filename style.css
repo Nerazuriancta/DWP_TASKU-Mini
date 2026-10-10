@@ -226,3 +226,64 @@ body.auth-page .auth-footer {
         padding: 50px 0;
     }
 }
+
+/* Handbook Section */
+.handbook-section {
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #536dfe, #7c4dff);
+    border-radius: 16px;
+    color: #ffffff;
+}
+
+.handbook-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.handbook-icon {
+    font-size: 42px;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.handbook-info h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+}
+
+.handbook-info p {
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: #f0efff;
+}
+
+.btn-handbook {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 20px;
+    background: #ffffff;
+    color: #536dfe;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-handbook:hover {
+    background: #f0efff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .handbook-content {
+        flex-direction: column;
+    }
+
+    .handbook-info h2 {
+        font-size: 19px;
+    }
+}
