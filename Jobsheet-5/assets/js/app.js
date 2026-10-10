@@ -100,11 +100,35 @@ function initValidasiForm() {
             }
         }
 
+        
         if (!valid) {
             e.preventDefault();
+            return;
         }
-    });
-}
+        
+        // Simpan data jika form tambah buku
+        if (form.querySelector("[name='judul']")) {
+            e.preventDefault();
+        
+            const bukuBaru = {
+                judul: form.querySelector("[name='judul']").value.trim(),
+                pengarang: form.querySelector("[name='pengarang']").value.trim(),
+                tahun: form.querySelector("[name='tahun']").value,
+                isbn: form.querySelector("[name='isbn']").value.trim(),
+                stok: form.querySelector("[name='stok']").value,
+                kategori: form.querySelector("[name='kategori']").value
+            };
+        
+            const daftarBuku = JSON.parse(localStorage.getItem("daftarBuku") || "[]");
+            daftarBuku.push(bukuBaru);
+            localStorage.setItem("daftarBuku", JSON.stringify(daftarBuku));
+        
+            alert("Data buku berhasil disimpan!");
+            window.location.href = "list.html";
+        }
+        
+            });
+        }
 
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
