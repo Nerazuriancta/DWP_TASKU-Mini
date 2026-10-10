@@ -9,7 +9,7 @@ async function muatDaftarAnggota() {
     try {
         await new Promise((resolve) => setTimeout(resolve, 600));
 
-        const res = await fetch("/Jobsheet-6/data/anggota.js");
+        const res = await fetch("../data/buku.json");
         if (!res.ok) {
             throw new Error("Gagal mengambil data (status " + res.status + ")");
         }
