@@ -106,9 +106,71 @@ function initValidasiForm() {
     });
 }
 
+function initEditData() {
+    document.querySelectorAll(".btn-edit").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            const row = btn.closest("tr");
+            const cells = row.querySelectorAll("td");
+
+            if (row.closest("table").querySelector("th").textContent === "No. Anggota") {
+                const namaLama = cells[1].textContent;
+                const alamatLama = cells[2].textContent;
+                const hpLama = cells[3].textContent;
+
+                const nama = prompt("Ubah nama anggota:", namaLama);
+                if (nama === null) return;
+
+                const alamat = prompt("Ubah alamat:", alamatLama);
+                if (alamat === null) return;
+
+                const hp = prompt("Ubah nomor HP:", hpLama);
+                if (hp === null) return;
+
+                if (!nama.trim() || !alamat.trim() || !hp.trim()) {
+                    alert("Data tidak boleh kosong!");
+                    return;
+                }
+
+                cells[1].textContent = nama;
+                cells[2].textContent = alamat;
+                cells[3].textContent = hp;
+            } else {
+                const judul = prompt("Ubah judul buku:", cells[0].textContent);
+                if (judul === null) return;
+
+                const pengarang = prompt("Ubah pengarang:", cells[1].textContent);
+                if (pengarang === null) return;
+
+                const tahun = prompt("Ubah tahun:", cells[2].textContent);
+                if (tahun === null) return;
+
+                const stok = prompt("Ubah stok:", cells[3].textContent);
+                if (stok === null) return;
+
+                if (!judul.trim() || !pengarang.trim() ||
+                    !tahun.trim() || !stok.trim() ||
+                    !Number.isInteger(Number(tahun)) ||
+                    !Number.isInteger(Number(stok)) ||
+                    Number(stok) < 0) {
+                    alert("Periksa kembali data buku!");
+                    return;
+                }
+
+                cells[0].textContent = judul;
+                cells[1].textContent = pengarang;
+                cells[2].textContent = tahun;
+                cells[3].textContent = stok;
+            }
+
+            alert("Data berhasil diubah!");
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
     initTableFilter();
     initValidasiForm();
+    initEditData();
 });
