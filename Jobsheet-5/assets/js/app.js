@@ -106,45 +106,9 @@ function initValidasiForm() {
     });
 }
 
-
-function initEditData() {
-    document.querySelectorAll(".btn-edit").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            const row = btn.closest("tr");
-            const cells = row.querySelectorAll("td");
-
-            const tabel = row.closest("table");
-            const kolomPertama = tabel.querySelector("th").textContent.trim();
-
-            const jenis = kolomPertama === "No. Anggota"
-                ? "anggota"
-                : "buku";
-
-            const data = {};
-
-            if (jenis === "anggota") {
-                data.no_anggota = cells[0].textContent;
-                data.nama = cells[1].textContent;
-                data.alamat = cells[2].textContent;
-                data.no_hp = cells[3].textContent;
-            } else {
-                data.judul = cells[0].textContent;
-                data.pengarang = cells[1].textContent;
-                data.tahun = cells[2].textContent;
-                data.stok = cells[3].textContent;
-            }
-
-            localStorage.setItem("edit_" + jenis, JSON.stringify(data));
-
-            window.location.href = "tambah.html?edit=1";
-        });
-    });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
     initTableFilter();
     initValidasiForm();
-    initEditData();
 });
