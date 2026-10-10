@@ -1,5 +1,4 @@
 /* ================= RESET ================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -7,15 +6,12 @@
 }
 
 /* ================= BODY ================= */
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f7fb;
     color: #222;
     line-height: 1.6;
 }
-
-/* ================= CONTAINER ================= */
 
 .container {
     width: 90%;
@@ -24,7 +20,6 @@ body {
 }
 
 /* ================= HEADER ================= */
-
 header {
     background-color: #536dfe;
     color: white;
@@ -48,7 +43,6 @@ header .identitas {
 }
 
 /* ================= SECTION ================= */
-
 section {
     padding: 70px 0;
 }
@@ -61,7 +55,6 @@ section h2 {
 }
 
 /* ================= TENTANG ================= */
-
 .tentang {
     background-color: white;
 }
@@ -75,7 +68,6 @@ section h2 {
 }
 
 /* ================= JOBSHEET ================= */
-
 .jobsheet-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -124,7 +116,6 @@ section h2 {
 }
 
 /* ================= TEKNOLOGI ================= */
-
 .teknologi {
     background-color: white;
 }
@@ -144,15 +135,14 @@ section h2 {
     font-size: 14px;
 }
 
-/* ================= FOOTER ================= */
-
+/* ================= FOOTER UMUM ================= */
 footer {
     width: 100%;
+    margin: 0;
     background-color: #2d3a8c;
     color: white;
     text-align: center;
     padding: 20px;
-    margin: 0;
 }
 
 footer p {
@@ -160,8 +150,7 @@ footer p {
     margin: 5px 0;
 }
 
-/* ================= HALAMAN LOGIN ================= */
-
+/* ================= HALAMAN LOGIN DAN REGISTER ================= */
 body.auth-page {
     min-height: 100vh;
     display: flex;
@@ -169,25 +158,36 @@ body.auth-page {
 }
 
 body.auth-page main {
-    flex: 1;
+    flex: 1 0 auto;
     width: 100%;
+    margin-left: 0;
 }
-
-/* Footer login dan register harus penuh */
 
 body.auth-page footer,
 body.auth-page .footer,
 body.auth-page .auth-footer {
+    display: block;
+    position: static;
     width: 100%;
     max-width: none;
-    margin-left: 0;
-    margin-right: 0;
-    align-self: stretch;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
     flex-shrink: 0;
+    align-self: stretch;
+}
+
+/* ================= FOOTER DASHBOARD ================= */
+/* Sisakan ruang untuk sidebar hanya pada layar desktop
+   dan hanya jika halaman bukan halaman autentikasi. */
+@media (min-width: 701px) {
+    body:not(.auth-page) footer {
+        margin-left: 245px;
+        width: calc(100% - 245px);
+    }
 }
 
 /* ================= RESPONSIVE ================= */
-
 @media (max-width: 800px) {
     .jobsheet-container {
         grid-template-columns: repeat(2, 1fr);
@@ -195,6 +195,13 @@ body.auth-page .auth-footer {
 
     header h1 {
         font-size: 34px;
+    }
+}
+
+@media (max-width: 700px) {
+    body:not(.auth-page) footer {
+        margin-left: 0;
+        width: 100%;
     }
 }
 
