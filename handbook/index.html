@@ -1,34 +1,981 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Handbook SIMPUS-Mini</title>
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEBLEARN | Handbook DPW</title>
+
+<style>
+:root {
+    --blue: #536dfe;
+    --purple: #7c4dff;
+    --bg: #f7f7ff;
+    --white: #ffffff;
+    --text: #292943;
+    --muted: #73738c;
+    --border: #e4e3f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-inner {
+    width: 92%;
+    max-width: 1180px;
+    min-height: 65px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--blue);
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: var(--purple);
+}
+
+.nav-label {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.container {
+    width: 92%;
+    max-width: 1180px;
+    margin: auto;
+}
+
+.hero {
+    padding: 65px 0 50px;
+    color: white;
+    background: linear-gradient(135deg, #536dfe, #7c4dff);
+}
+
+.eyebrow {
+    display: inline-block;
+    background: white;
+    color: var(--blue);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    max-width: 780px;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    max-width: 750px;
+    color: #f4f2ff;
+}
+
+.hero-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.info-chip {
+    padding: 7px 13px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    font-size: 0.88rem;
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 25px;
+    padding-top: 32px;
+    padding-bottom: 50px;
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+    top: 85px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    font-size: 1rem;
+    color: var(--blue);
+    margin-bottom: 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 8px 10px;
+    margin: 3px 0;
+    border-radius: 7px;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.sidebar a:hover {
+    background: #eef0ff;
+    color: var(--blue);
+}
+
+.content-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 15px rgba(83,109,254,0.04);
+}
+
+.content-card h2 {
+    color: var(--blue);
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+}
+
+.content-card h3 {
+    color: var(--purple);
+    font-size: 1.05rem;
+    margin: 22px 0 8px;
+}
+
+.content-card p {
+    margin: 10px 0;
+}
+
+.content-card ul,
+.content-card ol {
+    padding-left: 23px;
+    margin: 12px 0;
+}
+
+.content-card li {
+    margin: 7px 0;
+}
+
+.section-label {
+    color: var(--purple);
+    font-size: 0.78rem;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+}
+
+.jobsheet-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.jobsheet-card {
+    display: block;
+    padding: 20px;
+    background: #fbfaff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.jobsheet-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--purple);
+    box-shadow: 0 8px 20px rgba(124,77,255,0.1);
+}
+
+.jobsheet-number {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #eef0ff;
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 0.82rem;
+    margin-bottom: 10px;
+}
+
+.jobsheet-card h3 {
+    margin: 0 0 7px;
+    color: var(--blue);
+}
+
+.jobsheet-card p {
+    color: var(--muted);
+    font-size: 0.91rem;
+    margin: 0;
+}
+
+.note {
+    padding: 15px 17px;
+    background: #f1ebff;
+    border-left: 4px solid var(--purple);
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+.note strong {
+    color: var(--purple);
+}
+
+.code-box {
+    margin: 14px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #20203b;
+}
+
+.code-title {
+    padding: 10px 14px;
+    color: #e6e3ff;
+    background: #303052;
+    font-size: 0.82rem;
+}
+
+pre {
+    padding: 17px;
+    overflow-x: auto;
+    color: #f4f3ff;
+    font: 0.9rem/1.65 Consolas, monospace;
+}
+
+code:not(pre code) {
+    background: #eef0ff;
+    color: var(--blue);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+}
+
+details {
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    margin: 12px 0;
+    overflow: hidden;
+}
+
+summary {
+    cursor: pointer;
+    padding: 13px 16px;
+    background: #f8f8ff;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+summary:hover {
+    background: #eef0ff;
+}
+
+details[open] summary {
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-content {
+    padding: 16px;
+}
+
+.step-list {
+    list-style: none;
+    padding: 0 !important;
+    counter-reset: step;
+}
+
+.step-list li {
+    position: relative;
+    padding: 12px 12px 12px 48px;
+    margin: 10px 0;
+    background: #f8f8ff;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    counter-increment: step;
+}
+
+.step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.back-top {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--purple);
+    font-weight: bold;
+}
+
+.footer {
+    background: linear-gradient(135deg, #536dfe, #7c4dff);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 850px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .hero {
+        padding: 42px 0 32px;
+    }
+
+    .jobsheet-list {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        padding: 18px;
+    }
+
+    .nav-label {
+        display: none;
+    }
+}
+</style>
 </head>
-<body>
-<div class="page">
-    <header class="top">
-        <p class="eyebrow">Handbook Praktikum · SIMPUS-Mini</p>
-        <h1>Handbook Jobsheet 1–6</h1>
-        <p>Panduan mempelajari setiap tahap pengembangan SIMPUS-Mini.</p>
-    </header>
 
-    <main>
-        <section>
-            <h2>Daftar Handbook</h2>
-            <ul>
-                <li><a href="Jobsheet-1/index.html">Jobsheet 1 — Fondasi HTML Semantik</a></li>
-                <li><a href="Jobsheet-2/index.html">Jobsheet 2 — Dasar CSS dan Tampilan</a></li>
-                <li><a href="Jobsheet-3/index.html">Jobsheet 3 — Struktur Halaman</a></li>
-                <li><a href="Jobsheet-4/index.html">Jobsheet 4 — Navigasi dan Tautan</a></li>
-                <li><a href="Jobsheet-5/index.html">Jobsheet 5 — JavaScript</a></li>
-                <li><a href="Jobsheet-6/index.html">Jobsheet 6 — JSON dan Fetch</a></li>
-            </ul>
-        </section>
-    </main>
+<body id="top">
 
-    <footer>Handbook SIMPUS-Mini · Jobsheet 1–6</footer>
+<header class="navbar">
+    <div class="navbar-inner">
+        <a href="#top" class="brand">WEB<span>LEARN</span></a>
+        <div class="nav-label">Handbook Dasar Pemrograman Web</div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <span class="eyebrow">HANDBOOK · JOBSHEET 1–6</span>
+        <h1>Memahami Proses Pembuatan Website dari Awal</h1>
+        <p>
+            Panduan belajar Dasar Pemrograman Web yang membahas struktur HTML,
+            tampilan CSS, Bootstrap, JavaScript, serta pengolahan data JSON.
+            Gunakan handbook ini untuk mengulang materi praktikum.
+        </p>
+
+        <div class="hero-info">
+            <span class="info-chip">HTML & CSS</span>
+            <span class="info-chip">Bootstrap</span>
+            <span class="info-chip">JavaScript</span>
+            <span class="info-chip">JSON & Fetch</span>
+        </div>
+    </div>
+</section>
+
+<div class="container page-layout">
+
+<aside class="sidebar">
+    <h2>Menu Handbook</h2>
+    <nav>
+        <a href="#pengantar">Pengantar</a>
+        <a href="#peta-materi">Peta Materi</a>
+        <a href="#job1">Jobsheet 1</a>
+        <a href="#job2">Jobsheet 2</a>
+        <a href="#job3">Jobsheet 3</a>
+        <a href="#job4">Jobsheet 4</a>
+        <a href="#job5">Jobsheet 5</a>
+        <a href="#job6">Jobsheet 6</a>
+        <a href="#alur">Alur Program</a>
+        <a href="#istilah">Istilah Penting</a>
+    </nav>
+</aside>
+
+<main>
+
+<section class="content-card" id="pengantar">
+    <div class="section-label">MULAI DI SINI</div>
+    <h2>Pengantar Handbook</h2>
+
+    <p>
+        Website terdiri dari beberapa bagian yang saling berhubungan.
+        HTML membentuk struktur halaman, CSS mengatur tampilannya, Bootstrap
+        menyediakan komponen siap pakai, dan JavaScript membuat halaman
+        merespons tindakan pengguna.
+    </p>
+
+    <p>
+        Pada materi berikutnya, JSON digunakan sebagai format penyimpanan
+        data sederhana yang dapat dibaca melalui JavaScript menggunakan
+        Fetch API.
+    </p>
+
+    <div class="note">
+        <strong>Tujuan belajar</strong>
+        <p>
+            Memahami fungsi setiap teknologi dan mengetahui bagaimana file
+            dalam sebuah proyek website saling berhubungan.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="peta-materi">
+    <div class="section-label">RINGKASAN</div>
+    <h2>Peta Materi Jobsheet</h2>
+    <p>Pilih salah satu kartu untuk membuka materi yang ingin dipelajari.</p>
+
+    <div class="jobsheet-list">
+        <a class="jobsheet-card" href="#job1">
+            <span class="jobsheet-number">JOBSHEET 01</span>
+            <h3>Struktur HTML</h3>
+            <p>Mengenal kerangka halaman dan elemen pembentuk website.</p>
+        </a>
+
+        <a class="jobsheet-card" href="#job2">
+            <span class="jobsheet-number">JOBSHEET 02</span>
+            <h3>Dasar CSS</h3>
+            <p>Mengatur warna, ukuran teks, jarak, dan tata letak.</p>
+        </a>
+
+        <a class="jobsheet-card" href="#job3">
+            <span class="jobsheet-number">JOBSHEET 03</span>
+            <h3>Bootstrap</h3>
+            <p>Menggunakan komponen dan grid untuk membuat halaman responsif.</p>
+        </a>
+
+        <a class="jobsheet-card" href="#job4">
+            <span class="jobsheet-number">JOBSHEET 04</span>
+            <h3>Konsistensi Halaman</h3>
+            <p>Mengatur navigasi dan menjaga tampilan antarhalaman.</p>
+        </a>
+
+        <a class="jobsheet-card" href="#job5">
+            <span class="jobsheet-number">JOBSHEET 05</span>
+            <h3>JavaScript Dasar</h3>
+            <p>Mengenal event, pencarian tabel, dan validasi formulir.</p>
+        </a>
+
+        <a class="jobsheet-card" href="#job6">
+            <span class="jobsheet-number">JOBSHEET 06</span>
+            <h3>JSON dan Fetch</h3>
+            <p>Membaca data JSON dan menampilkan hasilnya ke tabel.</p>
+        </a>
+    </div>
+</section>
+
+<section class="content-card" id="job1">
+    <div class="section-label">MATERI 01</div>
+    <h2>Jobsheet 1 — Mengenal HTML</h2>
+
+    <p>
+        HTML adalah bahasa markup untuk menyusun struktur halaman website.
+        Elemen HTML dapat digunakan untuk membuat judul, paragraf, tautan,
+        tabel, gambar, dan formulir.
+    </p>
+
+    <h3>Contoh struktur HTML</h3>
+
+    <div class="code-box">
+        <div class="code-title">index.html</div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;SIMPUS Mini&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Sistem Perpustakaan Mini&lt;/h1&gt;
+    &lt;p&gt;Selamat datang di SIMPUS.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>Fungsi elemen HTML</h3>
+    <ul>
+        <li><code>&lt;head&gt;</code>: menyimpan informasi halaman.</li>
+        <li><code>&lt;body&gt;</code>: berisi konten halaman.</li>
+        <li><code>&lt;h1&gt;</code>: membuat judul utama.</li>
+        <li><code>&lt;p&gt;</code>: membuat paragraf.</li>
+        <li><code>&lt;a&gt;</code>: membuat tautan.</li>
+        <li><code>&lt;table&gt;</code>: menampilkan data dalam tabel.</li>
+        <li><code>&lt;form&gt;</code>: mengumpulkan input pengguna.</li>
+    </ul>
+
+    <details>
+        <summary>Apa yang dipelajari?</summary>
+        <div class="detail-content">
+            HTML menjadi kerangka website. Tanpa CSS, halaman tetap dapat
+            ditampilkan, tetapi tampilannya masih sederhana.
+        </div>
+    </details>
+</section>
+
+<section class="content-card" id="job2">
+    <div class="section-label">MATERI 02</div>
+    <h2>Jobsheet 2 — Dasar CSS</h2>
+
+    <p>
+        CSS digunakan untuk mengatur tampilan elemen HTML, seperti warna,
+        ukuran tulisan, jarak, garis tepi, dan tata letak.
+    </p>
+
+    <h3>Contoh kode CSS</h3>
+    <div class="code-box">
+        <div class="code-title">style.css</div>
+        <pre><code>body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7ff;
+    color: #292943;
+}
+
+h1 {
+    color: #536dfe;
+}
+
+p {
+    line-height: 1.7;
+}</code></pre>
+    </div>
+
+    <h3>Cara menghubungkan CSS</h3>
+    <div class="code-box">
+        <div class="code-title">Di dalam head HTML</div>
+        <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+    </div>
+
+    <p>
+        Atribut <code>href</code> menentukan lokasi file CSS. Pastikan jalur
+        file sesuai dengan struktur folder proyek.
+    </p>
+
+    <div class="note">
+        <strong>Hal penting</strong>
+        <p>CSS mengatur tampilan, bukan menyimpan atau mengolah data aplikasi.</p>
+    </div>
+</section>
+
+<section class="content-card" id="job3">
+    <div class="section-label">MATERI 03</div>
+    <h2>Jobsheet 3 — Bootstrap</h2>
+
+    <p>
+        Bootstrap merupakan framework CSS yang menyediakan class dan
+        komponen siap pakai. Bootstrap dapat membantu membuat tombol,
+        kartu, navigasi, dan layout responsif.
+    </p>
+
+    <h3>Contoh komponen Bootstrap</h3>
+    <div class="code-box">
+        <div class="code-title">HTML</div>
+        <pre><code>&lt;div class="container"&gt;
+    &lt;div class="card p-3"&gt;
+        &lt;h2 class="text-primary"&gt;Daftar Buku&lt;/h2&gt;
+        &lt;button class="btn btn-primary"&gt;
+            Tambah Buku
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h3>Fungsi beberapa class</h3>
+    <ul>
+        <li><code>container</code>: mengatur area konten.</li>
+        <li><code>card</code>: membuat komponen kartu.</li>
+        <li><code>p-3</code>: memberikan padding.</li>
+        <li><code>text-primary</code>: memberi warna teks utama Bootstrap.</li>
+        <li><code>btn btn-primary</code>: memberikan tampilan tombol.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Perlu diingat</strong>
+        <p>
+            Bootstrap membantu tampilan komponen. Tombol untuk menyimpan data
+            tetap membutuhkan proses pemrograman yang sesuai.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job4">
+    <div class="section-label">MATERI 04</div>
+    <h2>Jobsheet 4 — Konsistensi Halaman</h2>
+
+    <p>
+        Website yang memiliki beberapa halaman sebaiknya menggunakan
+        navigasi, warna, dan gaya komponen yang konsisten. Hal ini membuat
+        website lebih mudah digunakan dan dikembangkan.
+    </p>
+
+    <h3>Contoh navigasi</h3>
+    <div class="code-box">
+        <div class="code-title">HTML</div>
+        <pre><code>&lt;nav&gt;
+    &lt;a href="../index.html"&gt;Beranda&lt;/a&gt;
+    &lt;a href="list.html"&gt;Daftar Buku&lt;/a&gt;
+    &lt;a href="../anggota/list.html"&gt;
+        Daftar Anggota
+    &lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <p>
+        Atribut <code>href</code> menentukan halaman tujuan. Tanda
+        <code>../</code> digunakan untuk berpindah ke folder induk.
+    </p>
+
+    <h3>Manfaat struktur yang rapi</h3>
+    <ul>
+        <li>Memudahkan pengguna berpindah halaman.</li>
+        <li>Mengurangi pengulangan kode.</li>
+        <li>Memudahkan pemeliharaan proyek.</li>
+        <li>Menjaga konsistensi desain website.</li>
+    </ul>
+
+    <details>
+        <summary>Kenapa tautan bisa tidak berfungsi?</summary>
+        <div class="detail-content">
+            Periksa nama file, lokasi folder, dan jalur relatif pada atribut
+            href. Jalur yang salah dapat menyebabkan halaman tujuan tidak
+            ditemukan.
+        </div>
+    </details>
+</section>
+
+<section class="content-card" id="job5">
+    <div class="section-label">MATERI 05</div>
+    <h2>Jobsheet 5 — JavaScript Dasar</h2>
+
+    <p>
+        JavaScript menambahkan interaksi pada halaman website. Salah satu
+        contohnya adalah pencarian data pada tabel berdasarkan teks yang
+        diketik pengguna.
+    </p>
+
+    <h3>Contoh filter tabel</h3>
+    <div class="code-box">
+        <div class="code-title">JavaScript</div>
+        <pre><code>const input = document.getElementById("cari");
+
+input.addEventListener("input", function () {
+    const kata = input.value.toLowerCase();
+
+    const baris = document.querySelectorAll(
+        "#tabelBuku tbody tr"
+    );
+
+    baris.forEach(function (row) {
+        const isi = row.textContent.toLowerCase();
+
+        row.style.display =
+            isi.includes(kata) ? "" : "none";
+    });
+});</code></pre>
+    </div>
+
+    <h3>Penjelasan kode</h3>
+    <ul>
+        <li><code>getElementById()</code>: mengambil elemen berdasarkan ID.</li>
+        <li><code>addEventListener()</code>: menjalankan fungsi ketika event terjadi.</li>
+        <li><code>input.value</code>: membaca teks pencarian.</li>
+        <li><code>querySelectorAll()</code>: mengambil elemen sesuai selector.</li>
+        <li><code>forEach()</code>: memproses setiap baris tabel.</li>
+        <li><code>style.display</code>: mengatur tampilan baris.</li>
+    </ul>
+
+    <h3>Alur filter tabel</h3>
+    <ol class="step-list">
+        <li>Pengguna mengetik kata pencarian.</li>
+        <li>JavaScript membaca kata tersebut.</li>
+        <li>Program memeriksa isi setiap baris.</li>
+        <li>Baris yang cocok ditampilkan dan baris lain disembunyikan.</li>
+    </ol>
+
+    <div class="note">
+        <strong>Catatan</strong>
+        <p>
+            Filter ini hanya menyembunyikan baris pada tampilan browser.
+            Data aslinya tidak dihapus dari sumber data.
+        </p>
+    </div>
+
+    <details>
+        <summary>Apa itu validasi formulir?</summary>
+        <div class="detail-content">
+            Validasi formulir memeriksa input pengguna sebelum diproses,
+            misalnya memastikan kolom wajib tidak kosong atau format nilai
+            sesuai aturan.
+        </div>
+    </details>
+</section>
+
+<section class="content-card" id="job6">
+    <div class="section-label">MATERI 06</div>
+    <h2>Jobsheet 6 — JSON dan Fetch API</h2>
+
+    <p>
+        JSON adalah format data terstruktur. JavaScript dapat membaca data
+        JSON melalui Fetch API, kemudian menggunakan data tersebut untuk
+        membuat isi tabel secara dinamis.
+    </p>
+
+    <h3>Contoh file JSON</h3>
+    <div class="code-box">
+        <div class="code-title">data/buku.json</div>
+        <pre><code>[
+    {
+        "judul": "Belajar HTML",
+        "penulis": "Andi",
+        "tahun": 2025
+    },
+    {
+        "judul": "Dasar JavaScript",
+        "penulis": "Budi",
+        "tahun": 2026
+    }
+]</code></pre>
+    </div>
+
+    <h3>Membaca JSON menggunakan Fetch</h3>
+    <div class="code-box">
+        <div class="code-title">JavaScript</div>
+        <pre><code>async function tampilkanBuku() {
+    try {
+        const response = await fetch("../data/buku.json");
+
+        if (!response.ok) {
+            throw new Error("Data gagal dimuat");
+        }
+
+        const daftarBuku = await response.json();
+        const tbody = document.querySelector(
+            "#tabelBuku tbody"
+        );
+
+        tbody.textContent = "";
+
+        daftarBuku.forEach(function (buku) {
+            const tr = document.createElement("tr");
+
+            const judul = document.createElement("td");
+            judul.textContent = buku.judul;
+
+            const penulis = document.createElement("td");
+            penulis.textContent = buku.penulis;
+
+            const tahun = document.createElement("td");
+            tahun.textContent = buku.tahun;
+
+            tr.append(judul, penulis, tahun);
+            tbody.appendChild(tr);
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+tampilkanBuku();</code></pre>
+    </div>
+
+    <h3>Urutan proses</h3>
+    <ol class="step-list">
+        <li><code>fetch()</code> meminta file JSON melalui URL.</li>
+        <li><code>response.ok</code> memeriksa keberhasilan respons HTTP.</li>
+        <li><code>response.json()</code> membaca respons menjadi data JavaScript.</li>
+        <li><code>forEach()</code> mengulang setiap data buku.</li>
+        <li><code>createElement()</code> membuat elemen tabel.</li>
+        <li><code>appendChild()</code> memasukkan baris ke tabel.</li>
+    </ol>
+
+    <h3>Fungsi try dan catch</h3>
+    <p>
+        <code>try</code> berisi proses yang dijalankan. <code>catch</code>
+        menangani error, misalnya ketika file tidak ditemukan atau data
+        gagal dibaca.
+    </p>
+
+    <div class="note">
+        <strong>Jika fetch gagal</strong>
+        <p>
+            Periksa alamat file, lokasi JSON, dan respons pada Developer Tools.
+            Jalankan proyek melalui web server lokal karena browser dapat
+            membatasi permintaan file ketika HTML dibuka langsung dengan
+            alamat file://.
+        </p>
+    </div>
+
+    <details>
+        <summary>Apa perbedaan HTML statis dan JSON?</summary>
+        <div class="detail-content">
+            Pada HTML statis, baris tabel ditulis langsung di HTML.
+            Pada JSON, data disimpan dalam file terpisah dan dibaca
+            menggunakan JavaScript untuk ditampilkan ke halaman.
+        </div>
+    </details>
+</section>
+
+<section class="content-card" id="alur">
+    <div class="section-label">HUBUNGAN MATERI</div>
+    <h2>Bagaimana Semua Bagian Bekerja Bersama?</h2>
+
+    <p>
+        Setiap teknologi memiliki fungsi yang berbeda, tetapi semuanya dapat
+        digunakan bersama dalam satu proyek website.
+    </p>
+
+    <ol class="step-list">
+        <li><strong>HTML:</strong> membentuk struktur halaman.</li>
+        <li><strong>CSS:</strong> mengatur tampilan dan tata letak.</li>
+        <li><strong>Bootstrap:</strong> menyediakan komponen siap pakai.</li>
+        <li><strong>JavaScript:</strong> menangani interaksi pengguna.</li>
+        <li><strong>JSON:</strong> menyimpan data dalam format terstruktur.</li>
+        <li><strong>Fetch API:</strong> meminta data melalui URL untuk diproses JavaScript.</li>
+    </ol>
+</section>
+
+<section class="content-card" id="istilah">
+    <div class="section-label">GLOSARIUM</div>
+    <h2>Istilah Penting</h2>
+
+    <details>
+        <summary>HTML</summary>
+        <div class="detail-content">
+            Bahasa markup untuk menyusun struktur dan konten halaman website.
+        </div>
+    </details>
+
+    <details>
+        <summary>CSS</summary>
+        <div class="detail-content">
+            Bahasa stylesheet untuk mengatur tampilan halaman.
+        </div>
+    </details>
+
+    <details>
+        <summary>Framework</summary>
+        <div class="detail-content">
+            Kumpulan alat atau aturan siap pakai untuk membantu pengembangan.
+            Bootstrap merupakan framework CSS.
+        </div>
+    </details>
+
+    <details>
+        <summary>JavaScript</summary>
+        <div class="detail-content">
+            Bahasa pemrograman yang dapat merespons event dan mengubah
+            elemen halaman.
+        </div>
+    </details>
+
+    <details>
+        <summary>JSON</summary>
+        <div class="detail-content">
+            Format data terstruktur untuk menyimpan atau bertukar informasi.
+        </div>
+    </details>
+
+    <details>
+        <summary>Fetch API</summary>
+        <div class="detail-content">
+            Fitur JavaScript untuk meminta data dan menerima respons dari URL.
+        </div>
+    </details>
+
+    <details>
+        <summary>DOM</summary>
+        <div class="detail-content">
+            Representasi dokumen HTML yang dapat diakses dan diubah melalui
+            JavaScript.
+        </div>
+    </details>
+</section>
+
+<section class="content-card" id="kesimpulan">
+    <div class="section-label">PENUTUP</div>
+    <h2>Kesimpulan</h2>
+
+    <p>
+        Jobsheet 1–6 membahas dasar pengembangan website secara bertahap,
+        mulai dari struktur HTML, tampilan CSS dan Bootstrap, interaksi
+        JavaScript, hingga pembacaan data JSON melalui Fetch API.
+    </p>
+
+    <p>
+        Memahami fungsi setiap teknologi menjadi dasar untuk mengembangkan
+        aplikasi website yang lebih terstruktur dan mudah dipelihara.
+    </p>
+
+    <div class="note">
+        <strong>Catatan</strong>
+        <p>
+            Sesuaikan penjelasan dan contoh kode pada handbook ini dengan
+            isi modul praktikum yang benar-benar diberikan dosen.
+        </p>
+    </div>
+
+    <a href="#top" class="back-top">↑ Kembali ke atas</a>
+</section>
+
+</main>
 </div>
+
+<footer class="footer">
+    <p><strong>WEBLEARN</strong> · Handbook Dasar Pemrograman Web</p>
+    <p>Ringkasan pembelajaran Jobsheet 1–6</p>
+</footer>
+
 </body>
 </html>
+```
