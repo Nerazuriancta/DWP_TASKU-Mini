@@ -9,7 +9,7 @@ async function muatDaftarAnggota() {
     try {
         await new Promise((resolve) => setTimeout(resolve, 600));
 
-        const res = await fetch("../data/buku.json");
+        const res = await fetch("../data/anggota.json");
         if (!res.ok) {
             throw new Error("Gagal mengambil data (status " + res.status + ")");
         }
