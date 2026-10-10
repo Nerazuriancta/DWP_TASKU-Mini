@@ -1,47 +1,80 @@
-// === Hamburger menu (JS-driven, menggantikan checkbox hack) ===
+
+/* === Hamburger menu === */
 function initNavToggle() {
-    const toggleBtn =document.getElementById("nav-toggle-btn");
+    const toggleBtn = document.getElementById("nav-toggle-btn");
     const nav = document.querySelector("header nav");
+
     if (!toggleBtn || !nav) return;
 
-    toggleBtn.addEventListener("click", function() {
+    toggleBtn.addEventListener("click", function () {
         nav.classList.toggle("nav-open");
     });
 }
 
-// === Konfirmasi hapus (front-end only, belum ke server) ===
+/* === Konfirmasi hapus === */
+
 function initHapusConfirm() {
-    document.querySelectorAll(".btn-hapus").forEach(function (btn) {
-        btn.addEventListener("click", function (){
-            const row = btn.closest("tr");
-            const nama = row ? row.querySelector("td")?.textContent : "data ini";
-            const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?");
-            if (yakin && row) {
-                row.remove();
-            }
-        });
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".btn-hapus");
+        if (!btn) return;
+
+        const row = btn.closest("tr");
+        if (!row) return;
+
+        const halamanBuku = window.location.pathname.includes("/buku/");
+        const jenis = halamanBuku ? "daftarBuku" : "daftarAnggota";
+        const nama = row.querySelector("td")?.textContent || "data ini";
+
+        if (!confirm('Yakin ingin menghapus "' + nama + '"?')) return;
+
+        const id = row.dataset.localId;
+
+        if (id) {
+            // Hapus data baru dari localStorage.
+            const data = JSON.parse(localStorage.getItem(jenis) || "[]");
+            localStorage.setItem(
+                jenis,
+                JSON.stringify(data.filter(item => String(item.id) !== id))
+            );
+        } else {
+            // Tandai data awal HTML sebagai sudah dihapus.
+            const keyHapus = "dataDihapus_" + jenis;
+            const dihapus = JSON.parse(localStorage.getItem(keyHapus) || "[]");
+
+            const nilaiBaris = Array.from(row.querySelectorAll("td"))
+                .slice(0, -1)
+                .map(td => td.textContent.trim());
+
+            dihapus.push(JSON.stringify(nilaiBaris));
+            localStorage.setItem(keyHapus, JSON.stringify(dihapus));
+        }
+
+        row.remove();
     });
 }
 
-// === Filter/pencarian tabl real-time ===
+/* === Filter/pencarian tabel === */
 function initTableFilter() {
     const input = document.getElementById("search-input");
     const table = document.querySelector(".table-responsive table");
+
     if (!input || !table) return;
 
     input.addEventListener("keyup", function () {
         const keyword = input.value.toLowerCase();
-        const rows = table.querySelectorAll("tbody tr");
-        rows.forEach(function (row) {
-            const teks = row.textContent.toLowerCase();
-            row.style.display = teks.includes(keyword) ? "" : "none";
+
+        table.querySelectorAll("tbody tr").forEach(function (row) {
+            row.style.display = row.textContent.toLowerCase().includes(keyword)
+                ? ""
+                : "none";
         });
     });
 }
 
-// === Validasi form (client-side) ===
+/* === Validasi form === */
 function tampilkanError(input, pesan) {
     hapusError(input);
+
     const span = document.createElement("span");
     span.className = "error";
     span.textContent = pesan;
@@ -50,6 +83,7 @@ function tampilkanError(input, pesan) {
 
 function hapusError(input) {
     const next = input.nextElementSibling;
+
     if (next && next.classList.contains("error")) {
         next.remove();
     }
@@ -63,6 +97,7 @@ function initValidasiForm() {
         let valid = true;
 
         const judul = form.querySelector("[name='judul'], [name='nama']");
+
         if (judul && judul.value.trim() === "") {
             tampilkanError(judul, "Field ini wajib diisi.");
             valid = false;
@@ -71,6 +106,7 @@ function initValidasiForm() {
         }
 
         const pengarang = form.querySelector("[name='pengarang']");
+
         if (pengarang && pengarang.value.trim() === "") {
             tampilkanError(pengarang, "Pengarang wajib diisi.");
             valid = false;
@@ -79,9 +115,12 @@ function initValidasiForm() {
         }
 
         const tahun = form.querySelector("[name='tahun']");
+
         if (tahun) {
-            const nilai = parseInt(tahun.value, 10);
-            if (isNaN(nilai) || nilai < 1900 || nilai > 2026) {
+            const nilai = Number(tahun.value);
+
+            if (tahun.value === "" || !Number.isInteger(nilai) ||
+                nilai < 1900 || nilai > 2026) {
                 tampilkanError(tahun, "Tahun harus di antara 1900-2026.");
                 valid = false;
             } else {
@@ -90,27 +129,29 @@ function initValidasiForm() {
         }
 
         const stok = form.querySelector("[name='stok']");
+
         if (stok) {
-            const nilai = parseInt(stok.value, 10);
-            if (isNaN(nilai) || nilai < 0) {
-                tampilkanError(stok, "Stok tidak boleh negatif.");
+            const nilai = Number(stok.value);
+
+            if (stok.value === "" || !Number.isInteger(nilai) || nilai < 0) {
+                tampilkanError(stok, "Stok harus berupa angka 0 atau lebih.");
                 valid = false;
             } else {
                 hapusError(stok);
             }
         }
 
-        
         if (!valid) {
             e.preventDefault();
             return;
         }
-        
-        // Simpan data jika form tambah buku
+
+        // Simpan buku baru.
         if (form.querySelector("[name='judul']")) {
             e.preventDefault();
-        
-            const bukuBaru = {
+
+            const buku = {
+                id: Date.now(),
                 judul: form.querySelector("[name='judul']").value.trim(),
                 pengarang: form.querySelector("[name='pengarang']").value.trim(),
                 tahun: form.querySelector("[name='tahun']").value,
@@ -118,21 +159,126 @@ function initValidasiForm() {
                 stok: form.querySelector("[name='stok']").value,
                 kategori: form.querySelector("[name='kategori']").value
             };
-        
-            const daftarBuku = JSON.parse(localStorage.getItem("daftarBuku") || "[]");
-            daftarBuku.push(bukuBaru);
-            localStorage.setItem("daftarBuku", JSON.stringify(daftarBuku));
-        
-            alert("Data buku berhasil disimpan!");
+
+            const data = JSON.parse(localStorage.getItem("daftarBuku") || "[]");
+            data.push(buku);
+            localStorage.setItem("daftarBuku", JSON.stringify(data));
+
+            alert("Buku berhasil disimpan!");
+            window.location.href = "list.html";
+            return;
+        }
+
+        // Simpan anggota baru.
+        if (form.querySelector("[name='no_anggota']")) {
+            e.preventDefault();
+
+            const anggota = {
+                id: Date.now(),
+                no_anggota: form.querySelector("[name='no_anggota']").value.trim(),
+                nama: form.querySelector("[name='nama']").value.trim(),
+                alamat: form.querySelector("[name='alamat']").value.trim(),
+                no_hp: form.querySelector("[name='no_hp']").value.trim()
+            };
+
+            const data = JSON.parse(localStorage.getItem("daftarAnggota") || "[]");
+            data.push(anggota);
+            localStorage.setItem("daftarAnggota", JSON.stringify(data));
+
+            alert("Anggota berhasil disimpan!");
             window.location.href = "list.html";
         }
-        
-            });
+    });
+}
+
+/* === Tampilkan data localStorage di halaman daftar === */
+
+
+function tampilkanDataTersimpan() {
+    const path = window.location.pathname;
+    const halamanBuku = path.includes("/buku/");
+    const halamanAnggota = path.includes("/anggota/");
+
+    if (!halamanBuku && !halamanAnggota) return;
+
+    const table = document.querySelector(".table-responsive table");
+    if (!table) return;
+
+    const tbody = table.querySelector("tbody");
+    if (!tbody) return;
+
+    const jenis = halamanBuku ? "daftarBuku" : "daftarAnggota";
+    const keyHapus = "dataDihapus_" + jenis;
+    const dihapus = JSON.parse(localStorage.getItem(keyHapus) || "[]");
+
+    // Sembunyikan data awal HTML yang sudah dihapus.
+    tbody.querySelectorAll("tr:not([data-local-id])").forEach(function (row) {
+        const nilaiBaris = Array.from(row.querySelectorAll("td"))
+            .slice(0, -1)
+            .map(td => td.textContent.trim());
+
+        if (dihapus.includes(JSON.stringify(nilaiBaris))) {
+            row.remove();
         }
+    });
+
+    // Tampilkan data baru dari localStorage.
+    tbody.querySelectorAll("tr[data-local-id]").forEach(row => row.remove());
+
+    const data = JSON.parse(localStorage.getItem(jenis) || "[]");
+
+    data.forEach(function (item) {
+        const row = document.createElement("tr");
+        row.dataset.localId = String(item.id);
+
+        const nilai = halamanBuku
+            ? [item.judul, item.pengarang, item.tahun, item.stok]
+            : [item.no_anggota, item.nama, item.alamat, item.no_hp];
+
+        nilai.forEach(function (isi) {
+            const td = document.createElement("td");
+            td.textContent = isi ?? "";
+            row.appendChild(td);
+        });
+
+        const tdAksi = document.createElement("td");
+
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.className = "btn-edit";
+        edit.textContent = "Edit";
+
+        const hapus = document.createElement("button");
+        hapus.type = "button";
+        hapus.className = "btn-hapus";
+        hapus.textContent = "Hapus";
+
+        tdAksi.append(edit, hapus);
+        row.appendChild(tdAksi);
+        tbody.appendChild(row);
+    });
+}
+
+/* === Perbarui nomor urut === */
+function aturNomor() {
+    document.querySelectorAll("table tbody").forEach(function (tbody) {
+        let nomor = 1;
+
+        tbody.querySelectorAll("tr").forEach(function (row) {
+            if (row.style.display === "none") return;
+
+            const kolomPertama = row.querySelector("td");
+            if (kolomPertama) {
+                kolomPertama.textContent = nomor++;
+            }
+        });
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
     initTableFilter();
     initValidasiForm();
+    tampilkanDataTersimpan();
 });
