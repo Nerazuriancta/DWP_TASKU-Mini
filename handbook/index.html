@@ -396,6 +396,143 @@ details[open] summary {
         display: none;
     }
 }
+
+
+/* Mencegah elemen melebar melebihi layar */
+.container,
+.navbar-inner,
+.page-layout,
+main,
+.content-card,
+.code-box {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Tablet dan HP */
+@media (max-width: 850px) {
+    .page-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        padding-top: 20px;
+    }
+
+    .sidebar {
+        position: static;
+        padding: 14px;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 6px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sidebar nav a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .content-card {
+        padding: 20px;
+    }
+
+    .code-box {
+        overflow: hidden;
+    }
+
+    pre {
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: pre;
+        font-size: 0.82rem;
+    }
+}
+
+/* HP */
+@media (max-width: 520px) {
+    .container,
+    .navbar-inner {
+        width: calc(100% - 28px);
+    }
+
+    .navbar-inner {
+        min-height: 56px;
+        gap: 8px;
+        flex-wrap: wrap;
+        padding: 10px 0;
+    }
+
+    .brand {
+        font-size: 1.05rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .hero {
+        padding: 35px 0 28px;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.7rem, 7vw, 2.2rem);
+    }
+
+    .hero-info {
+        gap: 7px;
+    }
+
+    .info-chip {
+        font-size: 0.78rem;
+        padding: 6px 9px;
+    }
+
+    .page-layout {
+        padding-bottom: 28px;
+    }
+
+    .content-card {
+        padding: 15px;
+        margin-bottom: 16px;
+        border-radius: 11px;
+    }
+
+    .content-card h2 {
+        font-size: 1.2rem;
+        overflow-wrap: anywhere;
+    }
+
+    .content-card h3 {
+        font-size: 1rem;
+    }
+
+    .jobsheet-list {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .jobsheet-card {
+        padding: 16px;
+    }
+
+    .step-list li {
+        padding-left: 44px;
+    }
+
+    .detail-content {
+        padding: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .footer {
+        padding: 22px 12px;
+    }
+}
 </style>
 </head>
 
