@@ -1,541 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WEBLEARN | Handbook DPW</title>
-
-<style>
-:root {
-    --blue: #536dfe;
-    --purple: #7c4dff;
-    --bg: #f7f7ff;
-    --white: #ffffff;
-    --text: #292943;
-    --muted: #73738c;
-    --border: #e4e3f5;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 85px;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-}
-
-a {
-    text-decoration: none;
-    color: var(--blue);
-}
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-}
-
-.navbar-inner {
-    width: 92%;
-    max-width: 1180px;
-    min-height: 65px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand {
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: var(--blue);
-    letter-spacing: 1px;
-}
-
-.brand span {
-    color: var(--purple);
-}
-
-.nav-label {
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-
-.container {
-    width: 92%;
-    max-width: 1180px;
-    margin: auto;
-}
-
-.hero {
-    padding: 65px 0 50px;
-    color: white;
-    background: linear-gradient(135deg, #536dfe, #7c4dff);
-}
-
-.eyebrow {
-    display: inline-block;
-    background: white;
-    color: var(--blue);
-    padding: 5px 13px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-bottom: 18px;
-}
-
-.hero h1 {
-    max-width: 780px;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    line-height: 1.2;
-    margin-bottom: 18px;
-}
-
-.hero p {
-    max-width: 750px;
-    color: #f4f2ff;
-}
-
-.hero-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.info-chip {
-    padding: 7px 13px;
-    border: 1px solid rgba(255,255,255,0.5);
-    background: rgba(255,255,255,0.15);
-    border-radius: 8px;
-    font-size: 0.88rem;
-}
-
-.page-layout {
-    display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 25px;
-    padding-top: 32px;
-    padding-bottom: 50px;
-    align-items: start;
-}
-
-.sidebar {
-    position: sticky;
-    top: 85px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-}
-
-.sidebar h2 {
-    font-size: 1rem;
-    color: var(--blue);
-    margin-bottom: 12px;
-}
-
-.sidebar a {
-    display: block;
-    padding: 8px 10px;
-    margin: 3px 0;
-    border-radius: 7px;
-    color: var(--text);
-    font-size: 0.9rem;
-}
-
-.sidebar a:hover {
-    background: #eef0ff;
-    color: var(--blue);
-}
-
-.content-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 25px;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 15px rgba(83,109,254,0.04);
-}
-
-.content-card h2 {
-    color: var(--blue);
-    font-size: 1.45rem;
-    margin-bottom: 12px;
-}
-
-.content-card h3 {
-    color: var(--purple);
-    font-size: 1.05rem;
-    margin: 22px 0 8px;
-}
-
-.content-card p {
-    margin: 10px 0;
-}
-
-.content-card ul,
-.content-card ol {
-    padding-left: 23px;
-    margin: 12px 0;
-}
-
-.content-card li {
-    margin: 7px 0;
-}
-
-.section-label {
-    color: var(--purple);
-    font-size: 0.78rem;
-    font-weight: bold;
-    letter-spacing: 1.2px;
-    margin-bottom: 6px;
-}
-
-.jobsheet-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.jobsheet-card {
-    display: block;
-    padding: 20px;
-    background: #fbfaff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: 0.2s;
-}
-
-.jobsheet-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--purple);
-    box-shadow: 0 8px 20px rgba(124,77,255,0.1);
-}
-
-.jobsheet-number {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: #eef0ff;
-    color: var(--blue);
-    font-weight: bold;
-    font-size: 0.82rem;
-    margin-bottom: 10px;
-}
-
-.jobsheet-card h3 {
-    margin: 0 0 7px;
-    color: var(--blue);
-}
-
-.jobsheet-card p {
-    color: var(--muted);
-    font-size: 0.91rem;
-    margin: 0;
-}
-
-.note {
-    padding: 15px 17px;
-    background: #f1ebff;
-    border-left: 4px solid var(--purple);
-    border-radius: 8px;
-    margin: 18px 0;
-}
-
-.note strong {
-    color: var(--purple);
-}
-
-.code-box {
-    margin: 14px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #20203b;
-}
-
-.code-title {
-    padding: 10px 14px;
-    color: #e6e3ff;
-    background: #303052;
-    font-size: 0.82rem;
-}
-
-pre {
-    padding: 17px;
-    overflow-x: auto;
-    color: #f4f3ff;
-    font: 0.9rem/1.65 Consolas, monospace;
-}
-
-code:not(pre code) {
-    background: #eef0ff;
-    color: var(--blue);
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-family: Consolas, monospace;
-}
-
-details {
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    margin: 12px 0;
-    overflow: hidden;
-}
-
-summary {
-    cursor: pointer;
-    padding: 13px 16px;
-    background: #f8f8ff;
-    color: var(--blue);
-    font-weight: bold;
-}
-
-summary:hover {
-    background: #eef0ff;
-}
-
-details[open] summary {
-    border-bottom: 1px solid var(--border);
-}
-
-.detail-content {
-    padding: 16px;
-}
-
-.step-list {
-    list-style: none;
-    padding: 0 !important;
-    counter-reset: step;
-}
-
-.step-list li {
-    position: relative;
-    padding: 12px 12px 12px 48px;
-    margin: 10px 0;
-    background: #f8f8ff;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    counter-increment: step;
-}
-
-.step-list li::before {
-    content: counter(step);
-    position: absolute;
-    left: 12px;
-    top: 12px;
-    display: grid;
-    place-items: center;
-    width: 25px;
-    height: 25px;
-    background: linear-gradient(135deg, var(--blue), var(--purple));
-    color: white;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.back-top {
-    display: inline-block;
-    margin-top: 12px;
-    color: var(--purple);
-    font-weight: bold;
-}
-
-.footer {
-    background: linear-gradient(135deg, #536dfe, #7c4dff);
-    color: white;
-    text-align: center;
-    padding: 28px 15px;
-    font-size: 0.9rem;
-}
-
-@media (max-width: 850px) {
-    .page-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar {
-        position: static;
-    }
-
-    .sidebar nav {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 520px) {
-    .hero {
-        padding: 42px 0 32px;
-    }
-
-    .jobsheet-list {
-        grid-template-columns: 1fr;
-    }
-
-    .content-card {
-        padding: 18px;
-    }
-
-    .nav-label {
-        display: none;
-    }
-}
-
-
-/* Mencegah elemen melebar melebihi layar */
-.container,
-.navbar-inner,
-.page-layout,
-main,
-.content-card,
-.code-box {
-    min-width: 0;
-    max-width: 100%;
-}
-
-/* Tablet dan HP */
-@media (max-width: 850px) {
-    .page-layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
-        padding-top: 20px;
-    }
-
-    .sidebar {
-        position: static;
-        padding: 14px;
-    }
-
-    .sidebar nav {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 6px;
-        overflow-x: auto;
-        padding-bottom: 6px;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .sidebar nav a {
-        flex: 0 0 auto;
-        white-space: nowrap;
-        margin: 0;
-    }
-
-    .content-card {
-        padding: 20px;
-    }
-
-    .code-box {
-        overflow: hidden;
-    }
-
-    pre {
-        max-width: 100%;
-        overflow-x: auto;
-        white-space: pre;
-        font-size: 0.82rem;
-    }
-}
-
-/* HP */
-@media (max-width: 520px) {
-    .container,
-    .navbar-inner {
-        width: calc(100% - 28px);
-    }
-
-    .navbar-inner {
-        min-height: 56px;
-        gap: 8px;
-        flex-wrap: wrap;
-        padding: 10px 0;
-    }
-
-    .brand {
-        font-size: 1.05rem;
-    }
-
-    .nav-label {
-        display: none;
-    }
-
-    .hero {
-        padding: 35px 0 28px;
-    }
-
-    .hero h1 {
-        font-size: clamp(1.7rem, 7vw, 2.2rem);
-    }
-
-    .hero-info {
-        gap: 7px;
-    }
-
-    .info-chip {
-        font-size: 0.78rem;
-        padding: 6px 9px;
-    }
-
-    .page-layout {
-        padding-bottom: 28px;
-    }
-
-    .content-card {
-        padding: 15px;
-        margin-bottom: 16px;
-        border-radius: 11px;
-    }
-
-    .content-card h2 {
-        font-size: 1.2rem;
-        overflow-wrap: anywhere;
-    }
-
-    .content-card h3 {
-        font-size: 1rem;
-    }
-
-    .jobsheet-list {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 12px;
-    }
-
-    .jobsheet-card {
-        padding: 16px;
-    }
-
-    .step-list li {
-        padding-left: 44px;
-    }
-
-    .detail-content {
-        padding: 12px;
-        overflow-wrap: anywhere;
-    }
-
-    .footer {
-        padding: 22px 12px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBLEARN | Handbook DPW</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body id="top">
 
 <header class="navbar">
@@ -547,36 +17,41 @@ main,
 
 <section class="hero">
     <div class="container">
-        <span class="eyebrow">HANDBOOK · JOBSHEET 1–6</span>
+        <span class="eyebrow">HANDBOOK · JOBSHEET 1–12</span>
         <h1>Memahami Proses Pembuatan Website dari Awal</h1>
         <p>
-            Panduan belajar Dasar Pemrograman Web yang membahas struktur HTML,
-            tampilan CSS, Bootstrap, JavaScript, serta pengolahan data JSON.
-            Gunakan handbook ini untuk mengulang materi praktikum.
+            Panduan belajar untuk pemula yang membahas fungsi kode,
+            cara kerja program, hubungan antarfile, serta cara menemukan
+            dan memperbaiki kesalahan dalam pengembangan website.
         </p>
-
         <div class="hero-info">
             <span class="info-chip">HTML & CSS</span>
             <span class="info-chip">Bootstrap</span>
             <span class="info-chip">JavaScript</span>
-            <span class="info-chip">JSON & Fetch</span>
+            <span class="info-chip">PHP & Database</span>
         </div>
     </div>
 </section>
 
 <div class="container page-layout">
 
-<aside class="sidebar">g
+<aside class="sidebar">
     <h2>Menu Handbook</h2>
     <nav>
         <a href="#pengantar">Pengantar</a>
         <a href="#peta-materi">Peta Materi</a>
-        <a href="#job1">Jobsheet 1</a>
-        <a href="#job2">Jobsheet 2</a>
-        <a href="#job3">Jobsheet 3</a>
-        <a href="#job4">Jobsheet 4</a>
-        <a href="#job5">Jobsheet 5</a>
-        <a href="#job6">Jobsheet 6</a>
+        <a href="#job1">Jobsheet 1 — HTML</a>
+        <a href="#job2">Jobsheet 2 — CSS</a>
+        <a href="#job3">Jobsheet 3 — Bootstrap</a>
+        <a href="#job4">Jobsheet 4 — Navigasi</a>
+        <a href="#job5">Jobsheet 5 — JavaScript</a>
+        <a href="#job6">Jobsheet 6 — JSON</a>
+        <a href="#job7">Jobsheet 7 — PHP</a>
+        <a href="#job8">Jobsheet 8 — Database</a>
+        <a href="#job9">Jobsheet 9 — CRUD</a>
+        <a href="#job10">Jobsheet 10 — Login</a>
+        <a href="#job11">Jobsheet 11 — Keamanan</a>
+        <a href="#job12">Jobsheet 12 — API</a>
         <a href="#alur">Alur Program</a>
         <a href="#istilah">Istilah Penting</a>
     </nav>
@@ -589,23 +64,24 @@ main,
     <h2>Pengantar Handbook</h2>
 
     <p>
-        Website terdiri dari beberapa bagian yang saling berhubungan.
-        HTML membentuk struktur halaman, CSS mengatur tampilannya, Bootstrap
-        menyediakan komponen siap pakai, dan JavaScript membuat halaman
-        merespons tindakan pengguna.
+        Website dibangun dari beberapa teknologi yang mempunyai tugas
+        berbeda. HTML menyusun struktur halaman, CSS mengatur tampilannya,
+        JavaScript menangani interaksi, PHP memproses permintaan di server,
+        dan database menyimpan data.
     </p>
 
     <p>
-        Pada materi berikutnya, JSON digunakan sebagai format penyimpanan
-        data sederhana yang dapat dibaca melalui JavaScript menggunakan
-        Fetch API.
+        Jangan langsung menghafal semua kode. Pahami terlebih dahulu
+        tujuan kode tersebut, data yang diterima, proses yang dilakukan,
+        dan hasil yang dihasilkan.
     </p>
 
     <div class="note">
         <strong>Tujuan belajar</strong>
         <p>
-            Memahami fungsi setiap teknologi dan mengetahui bagaimana file
-            dalam sebuah proyek website saling berhubungan.
+            Setelah mempelajari handbook ini, kamu diharapkan mampu
+            membaca kode dasar, memahami fungsi setiap file, mengikuti
+            alur data, dan melakukan debugging sederhana.
         </p>
     </div>
 </section>
@@ -613,43 +89,37 @@ main,
 <section class="content-card" id="peta-materi">
     <div class="section-label">RINGKASAN</div>
     <h2>Peta Materi Jobsheet</h2>
-    <p>Pilih salah satu kartu untuk membuka materi yang ingin dipelajari.</p>
 
     <div class="jobsheet-list">
         <a class="jobsheet-card" href="#job1">
             <span class="jobsheet-number">JOBSHEET 01</span>
-            <h3>Struktur HTML</h3>
-            <p>Mengenal kerangka halaman dan elemen pembentuk website.</p>
+            <h3>HTML</h3>
+            <p>Struktur dasar halaman website.</p>
         </a>
-
         <a class="jobsheet-card" href="#job2">
             <span class="jobsheet-number">JOBSHEET 02</span>
-            <h3>Dasar CSS</h3>
-            <p>Mengatur warna, ukuran teks, jarak, dan tata letak.</p>
+            <h3>CSS</h3>
+            <p>Warna, ukuran, jarak, dan tata letak.</p>
         </a>
-
         <a class="jobsheet-card" href="#job3">
             <span class="jobsheet-number">JOBSHEET 03</span>
             <h3>Bootstrap</h3>
-            <p>Menggunakan komponen dan grid untuk membuat halaman responsif.</p>
+            <p>Komponen siap pakai dan layout responsif.</p>
         </a>
-
         <a class="jobsheet-card" href="#job4">
             <span class="jobsheet-number">JOBSHEET 04</span>
-            <h3>Konsistensi Halaman</h3>
-            <p>Mengatur navigasi dan menjaga tampilan antarhalaman.</p>
+            <h3>Navigasi</h3>
+            <p>Hubungan halaman dan struktur folder.</p>
         </a>
-
         <a class="jobsheet-card" href="#job5">
             <span class="jobsheet-number">JOBSHEET 05</span>
-            <h3>JavaScript Dasar</h3>
-            <p>Mengenal event, pencarian tabel, dan validasi formulir.</p>
+            <h3>JavaScript</h3>
+            <p>Event, pencarian, dan manipulasi halaman.</p>
         </a>
-
         <a class="jobsheet-card" href="#job6">
             <span class="jobsheet-number">JOBSHEET 06</span>
-            <h3>JSON dan Fetch</h3>
-            <p>Membaca data JSON dan menampilkan hasilnya ke tabel.</p>
+            <h3>JSON</h3>
+            <p>Membaca dan menampilkan data.</p>
         </a>
     </div>
 </section>
@@ -659,46 +129,65 @@ main,
     <h2>Jobsheet 1 — Mengenal HTML</h2>
 
     <p>
-        HTML adalah bahasa markup untuk menyusun struktur halaman website.
-        Elemen HTML dapat digunakan untuk membuat judul, paragraf, tautan,
-        tabel, gambar, dan formulir.
+        HTML adalah singkatan dari HyperText Markup Language.
+        HTML digunakan untuk menyusun struktur dan isi halaman website,
+        seperti judul, paragraf, gambar, tautan, tabel, dan formulir.
     </p>
 
     <h3>Contoh struktur HTML</h3>
-
     <div class="code-box">
         <div class="code-title">index.html</div>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="id"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;SIMPUS Mini&lt;/title&gt;
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Website Pertamaku&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;Sistem Perpustakaan Mini&lt;/h1&gt;
-    &lt;p&gt;Selamat datang di SIMPUS.&lt;/p&gt;
+    &lt;h1&gt;Selamat Datang&lt;/h1&gt;
+    &lt;p&gt;Ini adalah website pertamaku.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
     </div>
 
-    <h3>Fungsi elemen HTML</h3>
+    <h3>Penjelasan kode</h3>
     <ul>
-        <li><code>&lt;head&gt;</code>: menyimpan informasi halaman.</li>
-        <li><code>&lt;body&gt;</code>: berisi konten halaman.</li>
-        <li><code>&lt;h1&gt;</code>: membuat judul utama.</li>
-        <li><code>&lt;p&gt;</code>: membuat paragraf.</li>
-        <li><code>&lt;a&gt;</code>: membuat tautan.</li>
-        <li><code>&lt;table&gt;</code>: menampilkan data dalam tabel.</li>
-        <li><code>&lt;form&gt;</code>: mengumpulkan input pengguna.</li>
+        <li><code>&lt;!DOCTYPE html&gt;</code> memberi tahu browser bahwa dokumen menggunakan HTML modern.</li>
+        <li><code>&lt;html lang="id"&gt;</code> menjadi elemen utama dokumen dan menunjukkan bahasa Indonesia.</li>
+        <li><code>&lt;head&gt;</code> berisi informasi halaman yang tidak menjadi konten utama.</li>
+        <li><code>&lt;meta charset="UTF-8"&gt;</code> membantu menampilkan huruf dan simbol dengan benar.</li>
+        <li><code>&lt;title&gt;</code> menentukan judul yang muncul pada tab browser.</li>
+        <li><code>&lt;body&gt;</code> berisi konten yang dilihat pengguna.</li>
+        <li><code>&lt;h1&gt;</code> membuat judul utama.</li>
+        <li><code>&lt;p&gt;</code> membuat paragraf.</li>
     </ul>
 
-    <details>
-        <summary>Apa yang dipelajari?</summary>
-        <div class="detail-content">
-            HTML menjadi kerangka website. Tanpa CSS, halaman tetap dapat
-            ditampilkan, tetapi tampilannya masih sederhana.
-        </div>
-    </details>
+    <h3>Elemen, tag, dan atribut</h3>
+    <p>
+        Tag adalah penanda seperti <code>&lt;p&gt;</code>. Elemen adalah
+        bagian HTML yang terbentuk dari tag dan kontennya. Atribut
+        memberikan informasi tambahan, misalnya <code>href</code> pada tautan.
+    </p>
+
+    <div class="code-box">
+        <div class="code-title">Contoh tautan</div>
+        <pre><code>&lt;a href="tentang.html"&gt;Tentang Kami&lt;/a&gt;</code></pre>
+    </div>
+
+    <p>
+        Saat diklik, tautan tersebut mengarahkan pengguna ke halaman
+        <code>tentang.html</code>, selama alamat file tersebut benar.
+    </p>
+
+    <div class="learning-check">
+        <h4>Latihan</h4>
+        <p>
+            Ubah judul menjadi nama proyekmu. Tambahkan satu paragraf
+            yang menjelaskan tujuan website tersebut.
+        </p>
+    </div>
 </section>
 
 <section class="content-card" id="job2">
@@ -706,21 +195,23 @@ main,
     <h2>Jobsheet 2 — Dasar CSS</h2>
 
     <p>
-        CSS digunakan untuk mengatur tampilan elemen HTML, seperti warna,
-        ukuran tulisan, jarak, garis tepi, dan tata letak.
+        CSS adalah singkatan dari Cascading Style Sheets. CSS mengatur
+        bagaimana elemen HTML ditampilkan, misalnya warna, ukuran teks,
+        jarak antarelemen, garis tepi, dan tata letak.
     </p>
 
-    <h3>Contoh kode CSS</h3>
+    <h3>Contoh CSS</h3>
     <div class="code-box">
         <div class="code-title">style.css</div>
         <pre><code>body {
     font-family: Arial, sans-serif;
-    background-color: #f7f7ff;
-    color: #292943;
+    background-color: #f4f6ff;
+    color: #202443;
 }
 
 h1 {
     color: #536dfe;
+    font-size: 32px;
 }
 
 p {
@@ -728,20 +219,73 @@ p {
 }</code></pre>
     </div>
 
-    <h3>Cara menghubungkan CSS</h3>
+    <h3>Cara membaca CSS</h3>
+    <p>
+        Pada CSS, selector menentukan elemen yang akan diberi gaya.
+        Properti menentukan bagian tampilan yang diubah, sedangkan
+        nilai menentukan pengaturan yang digunakan.
+    </p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Kode</th><th>Fungsi</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>body</code></td><td>Memilih elemen body.</td></tr>
+                <tr><td><code>color</code></td><td>Mengatur warna teks.</td></tr>
+                <tr><td><code>background-color</code></td><td>Mengatur warna latar belakang.</td></tr>
+                <tr><td><code>font-size</code></td><td>Mengatur ukuran teks.</td></tr>
+                <tr><td><code>line-height</code></td><td>Mengatur jarak vertikal antarbaris.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Menghubungkan CSS dengan HTML</h3>
     <div class="code-box">
-        <div class="code-title">Di dalam head HTML</div>
+        <div class="code-title">Di dalam elemen head</div>
         <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
     </div>
 
     <p>
-        Atribut <code>href</code> menentukan lokasi file CSS. Pastikan jalur
-        file sesuai dengan struktur folder proyek.
+        Atribut <code>rel="stylesheet"</code> menyatakan bahwa file yang
+        dihubungkan adalah stylesheet. Atribut <code>href</code> menunjukkan
+        lokasi file CSS.
     </p>
 
-    <div class="note">
-        <strong>Hal penting</strong>
-        <p>CSS mengatur tampilan, bukan menyimpan atau mengolah data aplikasi.</p>
+    <h3>Memahami responsive design</h3>
+    <p>
+        Website responsif menyesuaikan tata letak dengan ukuran layar.
+        Contohnya, beberapa kartu yang berjajar pada laptop dapat berubah
+        menjadi satu kolom pada HP.
+    </p>
+
+    <div class="code-box">
+        <div class="code-title">Contoh media query</div>
+        <pre><code>.kartu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .kartu {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+    </div>
+
+    <p>
+        Media query di atas mengubah susunan menjadi satu kolom ketika
+        lebar layar maksimal 600 piksel.
+    </p>
+
+    <div class="learning-check">
+        <h4>Latihan</h4>
+        <p>
+            Ubah warna judul dan latar belakang. Setelah itu, kecilkan
+            ukuran browser untuk menguji tampilan responsif.
+        </p>
     </div>
 </section>
 
@@ -750,17 +294,18 @@ p {
     <h2>Jobsheet 3 — Bootstrap</h2>
 
     <p>
-        Bootstrap merupakan framework CSS yang menyediakan class dan
-        komponen siap pakai. Bootstrap dapat membantu membuat tombol,
-        kartu, navigasi, dan layout responsif.
+        Bootstrap adalah framework CSS yang menyediakan class siap pakai.
+        Dengan Bootstrap, pengembang dapat membuat tombol, kartu, navigasi,
+        formulir, dan grid tanpa menulis seluruh gaya dari awal.
     </p>
 
-    <h3>Contoh komponen Bootstrap</h3>
+    <h3>Contoh komponen</h3>
     <div class="code-box">
         <div class="code-title">HTML</div>
         <pre><code>&lt;div class="container"&gt;
     &lt;div class="card p-3"&gt;
         &lt;h2 class="text-primary"&gt;Daftar Buku&lt;/h2&gt;
+        &lt;p&gt;Berikut daftar buku perpustakaan.&lt;/p&gt;
         &lt;button class="btn btn-primary"&gt;
             Tambah Buku
         &lt;/button&gt;
@@ -768,32 +313,35 @@ p {
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h3>Fungsi beberapa class</h3>
+    <h3>Fungsi class</h3>
     <ul>
-        <li><code>container</code>: mengatur area konten.</li>
-        <li><code>card</code>: membuat komponen kartu.</li>
-        <li><code>p-3</code>: memberikan padding.</li>
-        <li><code>text-primary</code>: memberi warna teks utama Bootstrap.</li>
-        <li><code>btn btn-primary</code>: memberikan tampilan tombol.</li>
+        <li><code>container</code> mengatur area konten dan lebarnya.</li>
+        <li><code>card</code> membentuk komponen kartu.</li>
+        <li><code>p-3</code> memberi padding atau ruang di dalam elemen.</li>
+        <li><code>text-primary</code> menggunakan warna utama Bootstrap.</li>
+        <li><code>btn</code> memberi gaya dasar tombol.</li>
+        <li><code>btn-primary</code> memberi gaya tombol utama.</li>
     </ul>
 
     <div class="note">
-        <strong>Perlu diingat</strong>
+        <strong>Hal yang perlu dipahami</strong>
         <p>
-            Bootstrap membantu tampilan komponen. Tombol untuk menyimpan data
-            tetap membutuhkan proses pemrograman yang sesuai.
+            Bootstrap membantu mengatur tampilan. Tombol tidak otomatis
+            menyimpan data hanya karena menggunakan class
+            <code>btn btn-primary</code>. Fungsi tombol tetap perlu dibuat
+            menggunakan HTML, JavaScript, atau proses server.
         </p>
     </div>
 </section>
 
 <section class="content-card" id="job4">
     <div class="section-label">MATERI 04</div>
-    <h2>Jobsheet 4 — Konsistensi Halaman</h2>
+    <h2>Jobsheet 4 — Navigasi dan Struktur Halaman</h2>
 
     <p>
-        Website yang memiliki beberapa halaman sebaiknya menggunakan
-        navigasi, warna, dan gaya komponen yang konsisten. Hal ini membuat
-        website lebih mudah digunakan dan dikembangkan.
+        Pada website dengan banyak halaman, navigasi membantu pengguna
+        berpindah dari satu halaman ke halaman lain. Struktur folder yang
+        rapi juga memudahkan pengembang menemukan file.
     </p>
 
     <h3>Contoh navigasi</h3>
@@ -808,27 +356,25 @@ p {
 &lt;/nav&gt;</code></pre>
     </div>
 
-    <p>
-        Atribut <code>href</code> menentukan halaman tujuan. Tanda
-        <code>../</code> digunakan untuk berpindah ke folder induk.
-    </p>
-
-    <h3>Manfaat struktur yang rapi</h3>
+    <h3>Memahami alamat file</h3>
     <ul>
-        <li>Memudahkan pengguna berpindah halaman.</li>
-        <li>Mengurangi pengulangan kode.</li>
-        <li>Memudahkan pemeliharaan proyek.</li>
-        <li>Menjaga konsistensi desain website.</li>
+        <li><code>index.html</code> menunjuk file pada lokasi relatif saat ini.</li>
+        <li><code>tentang/index.html</code> menunjuk file dalam folder tentang.</li>
+        <li><code>../index.html</code> naik satu tingkat ke folder induk.</li>
     </ul>
 
-    <details>
-        <summary>Kenapa tautan bisa tidak berfungsi?</summary>
-        <div class="detail-content">
-            Periksa nama file, lokasi folder, dan jalur relatif pada atribut
-            href. Jalur yang salah dapat menyebabkan halaman tujuan tidak
-            ditemukan.
-        </div>
-    </details>
+    <p>
+        Jika tautan tidak bekerja, periksa ejaan nama file, huruf besar
+        dan kecil, serta lokasi file tujuan.
+    </p>
+
+    <div class="learning-check">
+        <h4>Latihan</h4>
+        <p>
+            Buat tautan dari halaman beranda ke halaman tentang. Pastikan
+            alamat pada atribut <code>href</code> sesuai dengan folder proyekmu.
+        </p>
+    </div>
 </section>
 
 <section class="content-card" id="job5">
@@ -836,19 +382,59 @@ p {
     <h2>Jobsheet 5 — JavaScript Dasar</h2>
 
     <p>
-        JavaScript menambahkan interaksi pada halaman website. Salah satu
-        contohnya adalah pencarian data pada tabel berdasarkan teks yang
-        diketik pengguna.
+        JavaScript adalah bahasa pemrograman yang membuat halaman website
+        menjadi interaktif. JavaScript dapat merespons klik, membaca input,
+        memvalidasi formulir, dan mengubah elemen HTML.
     </p>
 
-    <h3>Contoh filter tabel</h3>
+    <h3>Variabel dan fungsi</h3>
+    <div class="code-box">
+        <div class="code-title">JavaScript</div>
+        <pre><code>const nama = "Nera";
+
+function sapa(pengguna) {
+    return "Halo, " + pengguna + "!";
+}
+
+console.log(sapa(nama));</code></pre>
+    </div>
+
+    <ul>
+        <li><code>const</code> membuat variabel yang tidak dapat ditugaskan ulang.</li>
+        <li><code>nama</code> adalah nama variabel.</li>
+        <li><code>function</code> digunakan untuk mendefinisikan fungsi.</li>
+        <li><code>return</code> mengembalikan hasil dari fungsi.</li>
+        <li><code>console.log()</code> menampilkan informasi di console browser.</li>
+    </ul>
+
+    <h3>Event pada tombol</h3>
+    <div class="code-box">
+        <div class="code-title">HTML</div>
+        <pre><code>&lt;button id="tombolSapa"&gt;Klik Saya&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="code-box">
+        <div class="code-title">JavaScript</div>
+        <pre><code>const tombol = document.getElementById("tombolSapa");
+
+tombol.addEventListener("click", function () {
+    alert("Tombol berhasil diklik!");
+});</code></pre>
+    </div>
+
+    <p>
+        <code>getElementById()</code> mencari elemen dengan ID tertentu.
+        <code>addEventListener()</code> mendaftarkan fungsi yang dijalankan
+        saat terjadi event, dalam contoh ini adalah klik.
+    </p>
+
+    <h3>Pencarian pada tabel</h3>
     <div class="code-box">
         <div class="code-title">JavaScript</div>
         <pre><code>const input = document.getElementById("cari");
 
 input.addEventListener("input", function () {
     const kata = input.value.toLowerCase();
-
     const baris = document.querySelectorAll(
         "#tabelBuku tbody tr"
     );
@@ -862,40 +448,20 @@ input.addEventListener("input", function () {
 });</code></pre>
     </div>
 
-    <h3>Penjelasan kode</h3>
-    <ul>
-        <li><code>getElementById()</code>: mengambil elemen berdasarkan ID.</li>
-        <li><code>addEventListener()</code>: menjalankan fungsi ketika event terjadi.</li>
-        <li><code>input.value</code>: membaca teks pencarian.</li>
-        <li><code>querySelectorAll()</code>: mengambil elemen sesuai selector.</li>
-        <li><code>forEach()</code>: memproses setiap baris tabel.</li>
-        <li><code>style.display</code>: mengatur tampilan baris.</li>
-    </ul>
-
-    <h3>Alur filter tabel</h3>
-    <ol class="step-list">
-        <li>Pengguna mengetik kata pencarian.</li>
-        <li>JavaScript membaca kata tersebut.</li>
-        <li>Program memeriksa isi setiap baris.</li>
-        <li>Baris yang cocok ditampilkan dan baris lain disembunyikan.</li>
-    </ol>
+    <p>
+        Kode tersebut membaca kata pencarian, memeriksa isi setiap baris,
+        kemudian menyembunyikan baris yang tidak cocok. Pastikan HTML
+        memiliki input ber-ID <code>cari</code> dan tabel ber-ID
+        <code>tabelBuku</code>.
+    </p>
 
     <div class="note">
-        <strong>Catatan</strong>
+        <strong>Perlu diingat</strong>
         <p>
-            Filter ini hanya menyembunyikan baris pada tampilan browser.
-            Data aslinya tidak dihapus dari sumber data.
+            Filter ini hanya mengubah tampilan tabel pada browser.
+            Data sumber tidak dihapus dari database atau file.
         </p>
     </div>
-
-    <details>
-        <summary>Apa itu validasi formulir?</summary>
-        <div class="detail-content">
-            Validasi formulir memeriksa input pengguna sebelum diproses,
-            misalnya memastikan kolom wajib tidak kosong atau format nilai
-            sesuai aturan.
-        </div>
-    </details>
 </section>
 
 <section class="content-card" id="job6">
@@ -903,12 +469,12 @@ input.addEventListener("input", function () {
     <h2>Jobsheet 6 — JSON dan Fetch API</h2>
 
     <p>
-        JSON adalah format data terstruktur. JavaScript dapat membaca data
-        JSON melalui Fetch API, kemudian menggunakan data tersebut untuk
-        membuat isi tabel secara dinamis.
+        JSON adalah format untuk menyimpan dan bertukar data. JavaScript
+        dapat mengambil data dari file JSON menggunakan Fetch API, lalu
+        menampilkan data tersebut pada halaman.
     </p>
 
-    <h3>Contoh file JSON</h3>
+    <h3>Contoh data JSON</h3>
     <div class="code-box">
         <div class="code-title">data/buku.json</div>
         <pre><code>[
@@ -925,101 +491,538 @@ input.addEventListener("input", function () {
 ]</code></pre>
     </div>
 
+    <p>
+        JSON menggunakan pasangan nama properti dan nilai. Nama properti
+        serta teks ditulis dengan tanda kutip ganda. Setiap objek
+        merepresentasikan satu data buku.
+    </p>
+
     <h3>Membaca JSON menggunakan Fetch</h3>
     <div class="code-box">
         <div class="code-title">JavaScript</div>
-        <pre><code>async function tampilkanBuku() {
+        <pre><code>async function muatBuku() {
     try {
-        const response = await fetch("../data/buku.json");
+        const response = await fetch("data/buku.json");
 
         if (!response.ok) {
             throw new Error("Data gagal dimuat");
         }
 
         const daftarBuku = await response.json();
-        const tbody = document.querySelector(
-            "#tabelBuku tbody"
-        );
-
-        tbody.textContent = "";
-
-        daftarBuku.forEach(function (buku) {
-            const tr = document.createElement("tr");
-
-            const judul = document.createElement("td");
-            judul.textContent = buku.judul;
-
-            const penulis = document.createElement("td");
-            penulis.textContent = buku.penulis;
-
-            const tahun = document.createElement("td");
-            tahun.textContent = buku.tahun;
-
-            tr.append(judul, penulis, tahun);
-            tbody.appendChild(tr);
-        });
+        console.log(daftarBuku);
     } catch (error) {
-        console.error(error);
+        console.error("Terjadi kesalahan:", error);
     }
 }
 
-tampilkanBuku();</code></pre>
+muatBuku();</code></pre>
     </div>
 
-    <h3>Urutan proses</h3>
+    <ul>
+        <li><code>async</code> memungkinkan fungsi menggunakan <code>await</code>.</li>
+        <li><code>fetch()</code> meminta data dari alamat tertentu.</li>
+        <li><code>await</code> menunggu hasil operasi asynchronous.</li>
+        <li><code>response.ok</code> memeriksa apakah status HTTP menunjukkan keberhasilan.</li>
+        <li><code>response.json()</code> membaca respons sebagai JSON.</li>
+        <li><code>try/catch</code> membantu menangani kesalahan.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Jika data tidak muncul</strong>
+        <p>
+            Periksa alamat file JSON, struktur folder, format JSON, dan
+            pesan pada console browser. Coba jalankan proyek menggunakan
+            web server lokal.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job7">
+    <div class="section-label">MATERI 07</div>
+    <h2>Jobsheet 7 — Mengenal PHP dan Form</h2>
+
+    <p>
+        PHP adalah bahasa pemrograman yang biasanya dijalankan di server.
+        PHP dapat menerima input formulir, memeriksa data, mengakses database,
+        dan mengirimkan hasil kembali kepada browser.
+    </p>
+
+    <h3>Contoh formulir HTML</h3>
+    <div class="code-box">
+        <div class="code-title">form.html</div>
+        <pre><code>&lt;form action="proses.php" method="post"&gt;
+    &lt;label for="nama"&gt;Nama:&lt;/label&gt;
+    &lt;input type="text" id="nama" name="nama" required&gt;
+    &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+
+    <h3>Memproses input menggunakan PHP</h3>
+    <div class="code-box">
+        <div class="code-title">proses.php</div>
+        <pre><code>&lt;?php
+$nama = $_POST['nama'] ?? '';
+$nama = trim($nama);
+
+if ($nama === '') {
+    echo 'Nama wajib diisi.';
+} else {
+    echo 'Halo, ' .
+        htmlspecialchars($nama, ENT_QUOTES, 'UTF-8');
+}
+?&gt;</code></pre>
+    </div>
+
+    <ul>
+        <li><code>method="post"</code> mengirim data melalui metode POST.</li>
+        <li><code>name="nama"</code> menjadi kunci data yang diterima PHP.</li>
+        <li><code>$_POST['nama']</code> mengambil nilai dari input tersebut.</li>
+        <li><code>?? ''</code> memberi nilai kosong jika data tidak tersedia.</li>
+        <li><code>trim()</code> menghapus spasi di awal dan akhir teks.</li>
+        <li><code>if</code> memeriksa apakah input kosong.</li>
+        <li><code>htmlspecialchars()</code> membantu mencegah teks pengguna ditafsirkan sebagai HTML.</li>
+    </ul>
+
+    <h3>Alur kerja formulir</h3>
     <ol class="step-list">
-        <li><code>fetch()</code> meminta file JSON melalui URL.</li>
-        <li><code>response.ok</code> memeriksa keberhasilan respons HTTP.</li>
-        <li><code>response.json()</code> membaca respons menjadi data JavaScript.</li>
-        <li><code>forEach()</code> mengulang setiap data buku.</li>
-        <li><code>createElement()</code> membuat elemen tabel.</li>
-        <li><code>appendChild()</code> memasukkan baris ke tabel.</li>
+        <li>Pengguna membuka halaman formulir.</li>
+        <li>Pengguna mengisi input dan menekan tombol kirim.</li>
+        <li>Browser mengirim data ke file yang ditentukan oleh <code>action</code>.</li>
+        <li>PHP membaca dan memvalidasi data.</li>
+        <li>PHP mengirim respons yang ditampilkan browser.</li>
     </ol>
 
-    <h3>Fungsi try dan catch</h3>
+    <div class="note">
+        <strong>Ingat</strong>
+        <p>
+            Validasi HTML seperti <code>required</code> membantu pengguna,
+            tetapi pemeriksaan tetap harus dilakukan di PHP karena data
+            bisa dikirim tanpa menggunakan formulir biasa.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job8">
+    <div class="section-label">MATERI 08</div>
+    <h2>Jobsheet 8 — Koneksi Database PostgreSQL</h2>
+
     <p>
-        <code>try</code> berisi proses yang dijalankan. <code>catch</code>
-        menangani error, misalnya ketika file tidak ditemukan atau data
-        gagal dibaca.
+        Database digunakan untuk menyimpan data secara terstruktur.
+        Pada aplikasi PHP, PDO dapat digunakan untuk terhubung ke PostgreSQL
+        dan menjalankan perintah SQL.
+    </p>
+
+    <h3>Contoh koneksi PDO</h3>
+    <div class="code-box">
+        <div class="code-title">config/koneksi.php</div>
+        <pre><code>&lt;?php
+$host = 'localhost';
+$port = '5432';
+$dbname = 'tasku_mini';
+$user = 'postgres';
+$password = 'password_database';
+
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+
+$pdo = new PDO($dsn, $user, $password, [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
+?&gt;</code></pre>
+    </div>
+
+    <h3>Penjelasan bagian koneksi</h3>
+    <ul>
+        <li><code>host</code> adalah alamat server database.</li>
+        <li><code>port</code> adalah port koneksi PostgreSQL, umumnya 5432.</li>
+        <li><code>dbname</code> adalah nama database yang digunakan.</li>
+        <li><code>user</code> dan <code>password</code> adalah kredensial database.</li>
+        <li><code>pgsql:</code> menunjukkan bahwa PDO menggunakan driver PostgreSQL.</li>
+        <li><code>new PDO()</code> membuat koneksi ke database.</li>
+        <li><code>PDO::ERRMODE_EXCEPTION</code> membuat kesalahan koneksi atau query lebih mudah ditangani melalui exception.</li>
+    </ul>
+
+    <h3>Contoh query SQL</h3>
+    <div class="code-box">
+        <div class="code-title">SQL</div>
+        <pre><code>SELECT * FROM mata_kuliah;
+
+INSERT INTO mata_kuliah (nama_matkul, dosen, kelas)
+VALUES ('Basis Data', 'Bu Rina', 'TI-2D');</code></pre>
+    </div>
+
+    <ul>
+        <li><code>SELECT</code> membaca data.</li>
+        <li><code>INSERT</code> menambahkan data.</li>
+        <li><code>UPDATE</code> mengubah data.</li>
+        <li><code>DELETE</code> menghapus data.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Jika koneksi gagal</strong>
+        <p>
+            Periksa apakah PostgreSQL aktif, nama database benar, port
+            sesuai, username dan password benar, serta ekstensi
+            <code>pdo_pgsql</code> tersedia pada PHP.
+        </p>
+        <p>
+            Ganti nilai contoh password dengan kredensial lokalmu.
+            Jangan menaruh password asli di repositori publik.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job9">
+    <div class="section-label">MATERI 09</div>
+    <h2>Jobsheet 9 — CRUD</h2>
+
+    <p>
+        CRUD merupakan singkatan dari Create, Read, Update, dan Delete.
+        Keempat operasi ini adalah dasar pengelolaan data pada aplikasi.
+    </p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Operasi</th><th>Fungsi</th><th>Contoh</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Create</td><td>Membuat data baru.</td><td>Menambahkan tugas.</td></tr>
+                <tr><td>Read</td><td>Membaca data.</td><td>Melihat daftar tugas.</td></tr>
+                <tr><td>Update</td><td>Mengubah data.</td><td>Mengubah status tugas.</td></tr>
+                <tr><td>Delete</td><td>Menghapus data.</td><td>Menghapus tugas.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Read — membaca data</h3>
+    <div class="code-box">
+        <div class="code-title">PHP</div>
+        <pre><code>&lt;?php
+$stmt = $pdo->query(
+    'SELECT id_matkul, nama_matkul
+     FROM mata_kuliah
+     ORDER BY nama_matkul'
+);
+
+$matkul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?&gt;</code></pre>
+    </div>
+
+    <p>
+        <code>query()</code> mengirim perintah SQL. <code>fetchAll()</code>
+        mengambil seluruh baris hasil, sedangkan
+        <code>PDO::FETCH_ASSOC</code> membuat data dapat diakses melalui
+        nama kolom, misalnya <code>$baris['nama_matkul']</code>.
+    </p>
+
+    <h3>Create — menambah data dengan prepared statement</h3>
+    <div class="code-box">
+        <div class="code-title">PHP</div>
+        <pre><code>&lt;?php
+$sql = 'INSERT INTO mata_kuliah
+        (nama_matkul, dosen, kelas)
+        VALUES (:nama, :dosen, :kelas)';
+
+$stmt = $pdo->prepare($sql);
+
+$stmt->execute([
+    ':nama' => $nama,
+    ':dosen' => $dosen,
+    ':kelas' => $kelas
+]);
+?&gt;</code></pre>
+    </div>
+
+    <p>
+        <code>prepare()</code> menyiapkan query dengan parameter.
+        <code>execute()</code> mengirimkan nilai parameter dan menjalankan
+        query tersebut. Cara ini membantu melindungi query dari SQL injection.
+    </p>
+
+    <h3>Update dan Delete</h3>
+    <div class="code-box">
+        <div class="code-title">Contoh SQL</div>
+        <pre><code>UPDATE mata_kuliah
+SET nama_matkul = :nama
+WHERE id_matkul = :id;
+
+DELETE FROM mata_kuliah
+WHERE id_matkul = :id;</code></pre>
+    </div>
+
+    <div class="note">
+        <strong>Hati-hati dengan WHERE</strong>
+        <p>
+            Kondisi <code>WHERE</code> menentukan baris yang diubah atau
+            dihapus. Tanpa kondisi yang tepat, query dapat memengaruhi
+            seluruh baris pada tabel.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job10">
+    <div class="section-label">MATERI 10</div>
+    <h2>Jobsheet 10 — Register, Login, dan Session</h2>
+
+    <p>
+        Autentikasi adalah proses memeriksa identitas pengguna. Pada aplikasi
+        web, pengguna biasanya memasukkan username atau email dan password.
+        Jika berhasil, aplikasi menyimpan status login menggunakan session.
+    </p>
+
+    <h3>Alur register dan login</h3>
+    <ol class="step-list">
+        <li>Pengguna mengisi formulir pendaftaran.</li>
+        <li>Server memvalidasi data yang dikirim.</li>
+        <li>Password disimpan dalam bentuk hash, bukan teks asli.</li>
+        <li>Saat login, server mencari akun berdasarkan username atau email.</li>
+        <li>Server memeriksa password menggunakan <code>password_verify()</code>.</li>
+        <li>Jika benar, server menyimpan identitas pengguna ke session.</li>
+        <li>Halaman yang dilindungi memeriksa session sebelum ditampilkan.</li>
+    </ol>
+
+    <h3>Membuat password hash</h3>
+    <div class="code-box">
+        <div class="code-title">PHP</div>
+        <pre><code>$hash = password_hash($password, PASSWORD_DEFAULT);
+
+// Simpan $hash ke database,
+// bukan password asli pengguna.</code></pre>
+    </div>
+
+    <p>
+        <code>password_hash()</code> membuat representasi hash password.
+        Saat login, <code>password_verify()</code> dapat digunakan untuk
+        memeriksa password yang dimasukkan dengan hash yang tersimpan.
+    </p>
+
+    <h3>Memeriksa session</h3>
+    <div class="code-box">
+        <div class="code-title">Contoh pemeriksaan login</div>
+        <pre><code>&lt;?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../auth/login.php');
+    exit;
+}
+?&gt;</code></pre>
+    </div>
+
+    <ul>
+        <li><code>session_start()</code> membuka atau melanjutkan session.</li>
+        <li><code>$_SESSION['user_id']</code> menyimpan identitas pengguna yang login.</li>
+        <li><code>isset()</code> memeriksa apakah identitas tersebut tersedia.</li>
+        <li><code>header()</code> mengarahkan browser ke halaman login.</li>
+        <li><code>exit</code> menghentikan proses setelah redirect.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Hal penting</strong>
+        <p>
+            Letakkan pemeriksaan session sebelum HTML dikirim ke browser.
+            Pastikan juga halaman yang dilindungi melakukan pemeriksaan
+            sendiri, bukan hanya menyembunyikan tombol atau tautan.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job11">
+    <div class="section-label">MATERI 11</div>
+    <h2>Jobsheet 11 — Keamanan Web</h2>
+
+    <p>
+        Keamanan web bertujuan mencegah input berbahaya, akses tanpa izin,
+        dan permintaan yang tidak sah. Keamanan bukan hanya satu fitur,
+        melainkan gabungan beberapa langkah perlindungan.
+    </p>
+
+    <h3>1. SQL Injection</h3>
+    <p>
+        SQL injection terjadi ketika input pengguna dimasukkan ke query
+        sebagai bagian dari perintah SQL. Gunakan prepared statement agar
+        nilai input diperlakukan sebagai parameter.
+    </p>
+
+    <div class="code-box">
+        <div class="code-title">Contoh prepared statement</div>
+        <pre><code>$stmt = $pdo->prepare(
+    'SELECT id, password_hash
+     FROM users
+     WHERE username = :username'
+);
+
+$stmt->execute([
+    ':username' => $username
+]);
+
+$user = $stmt->fetch(PDO::FETCH_ASSOC);</code></pre>
+    </div>
+
+    <h3>2. XSS dan escaping output</h3>
+    <p>
+        XSS dapat terjadi ketika data yang dimasukkan pengguna ditampilkan
+        sebagai HTML atau skrip tanpa pengamanan yang sesuai.
+    </p>
+
+    <div class="code-box">
+        <div class="code-title">PHP</div>
+        <pre><code>echo htmlspecialchars(
+    $namaTugas,
+    ENT_QUOTES,
+    'UTF-8'
+);</code></pre>
+    </div>
+
+    <p>
+        Untuk teks biasa yang ditampilkan ke HTML, fungsi tersebut membantu
+        mengubah karakter khusus menjadi representasi yang aman.
+    </p>
+
+    <h3>3. Session dan akses halaman</h3>
+    <p>
+        Halaman yang membutuhkan login harus memeriksa session pada sisi
+        server. Pengguna yang belum login tidak boleh dapat mengaksesnya
+        hanya dengan mengetik URL secara langsung.
+    </p>
+
+    <h3>4. CSRF</h3>
+    <p>
+        CSRF adalah serangan yang membuat browser pengguna mengirim
+        permintaan tanpa disadari. Formulir yang mengubah data perlu
+        perlindungan token CSRF yang dibuat dan diverifikasi di server.
+    </p>
+
+    <h3>5. Pengujian keamanan</h3>
+    <ul>
+        <li>Uji login dengan username dan password yang benar.</li>
+        <li>Uji login dengan data salah.</li>
+        <li>Coba input <code>' OR '1'='1</code>; input tersebut tidak boleh melewati autentikasi.</li>
+        <li>Coba membuka halaman terlindungi sebelum login.</li>
+        <li>Periksa bahwa data pengguna yang ditampilkan di-escape.</li>
+        <li>Periksa perlindungan CSRF pada proses perubahan data.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Ingat</strong>
+        <p>
+            Prepared statement, validasi input, escaping output, pemeriksaan
+            session, dan perlindungan CSRF menangani risiko yang berbeda.
+            Satu langkah tidak menggantikan langkah lainnya.
+        </p>
+    </div>
+</section>
+
+<section class="content-card" id="job12">
+    <div class="section-label">MATERI 12</div>
+    <h2>Jobsheet 12 — Integrasi API dan JSON</h2>
+
+    <p>
+        API menjadi penghubung antarkomponen aplikasi. JavaScript dapat
+        mengirim permintaan ke API, PHP memproses permintaan tersebut,
+        database menyediakan atau menyimpan data, lalu server mengirim
+        respons kepada browser.
+    </p>
+
+    <h3>Alur permintaan</h3>
+    <ol class="step-list">
+        <li>Pengguna membuka halaman atau menekan tombol.</li>
+        <li>JavaScript mengirim permintaan melalui <code>fetch()</code>.</li>
+        <li>PHP API memvalidasi permintaan dan data yang diterima.</li>
+        <li>PHP menjalankan query database jika diperlukan.</li>
+        <li>API mengirim respons, misalnya dalam format JSON.</li>
+        <li>JavaScript membaca respons dan memperbarui tampilan.</li>
+    </ol>
+
+    <h3>Contoh mengambil data dari API</h3>
+    <div class="code-box">
+        <div class="code-title">JavaScript</div>
+        <pre><code>async function muatTugas() {
+    try {
+        const response = await fetch("../api/index.php");
+
+        if (!response.ok) {
+            throw new Error(
+                "Permintaan gagal: " + response.status
+            );
+        }
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Gagal memuat tugas:", error);
+    }
+}
+
+muatTugas();</code></pre>
+    </div>
+
+    <ul>
+        <li><code>fetch()</code> mengirim permintaan ke URL API.</li>
+        <li><code>response.ok</code> memeriksa status keberhasilan HTTP.</li>
+        <li><code>response.json()</code> membaca respons sebagai JSON.</li>
+        <li><code>console.log()</code> membantu melihat data saat pengembangan.</li>
+        <li><code>catch</code> menangani kesalahan yang terjadi.</li>
+    </ul>
+
+    <h3>Contoh respons JSON</h3>
+    <div class="code-box">
+        <div class="code-title">Respons API</div>
+        <pre><code>{
+    "success": true,
+    "message": "Data berhasil dibaca",
+    "data": [
+        {
+            "id_tugas": 1,
+            "nama_tugas": "Jobsheet 4",
+            "status": "Selesai"
+        }
+    ]
+}</code></pre>
+    </div>
+
+    <p>
+        JSON adalah format pertukaran data, bukan database. Pastikan
+        respons API benar-benar berupa JSON dan alamat pada
+        <code>fetch()</code> sesuai dengan struktur folder aplikasi.
     </p>
 
     <div class="note">
-        <strong>Jika fetch gagal</strong>
+        <strong>Jika API gagal</strong>
         <p>
-            Periksa alamat file, lokasi JSON, dan respons pada Developer Tools.
-            Jalankan proyek melalui web server lokal karena browser dapat
-            membatasi permintaan file ketika HTML dibuka langsung dengan
-            alamat file://.
+            Periksa URL, status HTTP, format JSON, pesan error PHP,
+            koneksi database, dan tab Network pada Developer Tools.
         </p>
     </div>
-
-    <details>
-        <summary>Apa perbedaan HTML statis dan JSON?</summary>
-        <div class="detail-content">
-            Pada HTML statis, baris tabel ditulis langsung di HTML.
-            Pada JSON, data disimpan dalam file terpisah dan dibaca
-            menggunakan JavaScript untuk ditampilkan ke halaman.
-        </div>
-    </details>
 </section>
 
 <section class="content-card" id="alur">
-    <div class="section-label">HUBUNGAN MATERI</div>
+    <div class="section-label">RANGKUMAN</div>
     <h2>Bagaimana Semua Bagian Bekerja Bersama?</h2>
 
     <p>
-        Setiap teknologi memiliki fungsi yang berbeda, tetapi semuanya dapat
-        digunakan bersama dalam satu proyek website.
+        Contohnya, ketika pengguna menambahkan tugas, data melewati
+        beberapa bagian aplikasi.
     </p>
 
     <ol class="step-list">
-        <li><strong>HTML:</strong> membentuk struktur halaman.</li>
-        <li><strong>CSS:</strong> mengatur tampilan dan tata letak.</li>
-        <li><strong>Bootstrap:</strong> menyediakan komponen siap pakai.</li>
-        <li><strong>JavaScript:</strong> menangani interaksi pengguna.</li>
-        <li><strong>JSON:</strong> menyimpan data dalam format terstruktur.</li>
-        <li><strong>Fetch API:</strong> meminta data melalui URL untuk diproses JavaScript.</li>
+        <li><strong>HTML:</strong> menampilkan formulir input tugas.</li>
+        <li><strong>CSS:</strong> mengatur tampilan formulir.</li>
+        <li><strong>JavaScript:</strong> menangani interaksi jika digunakan.</li>
+        <li><strong>PHP:</strong> menerima dan memvalidasi data di server.</li>
+        <li><strong>PDO:</strong> mengirim query ke database.</li>
+        <li><strong>PostgreSQL:</strong> menyimpan data tugas.</li>
+        <li><strong>Respons:</strong> server mengirim hasil kembali ke browser.</li>
     </ol>
+
+    <div class="learning-check">
+        <h4>Latihan mandiri</h4>
+        <p>
+            Pilih satu fitur dari proyekmu. Temukan file formulir, file
+            proses, file koneksi database, query SQL, dan halaman yang
+            menampilkan hasil. Tuliskan fungsi masing-masing file.
+        </p>
+    </div>
 </section>
 
 <section class="content-card" id="istilah">
@@ -1036,23 +1039,29 @@ tampilkanBuku();</code></pre>
     <details>
         <summary>CSS</summary>
         <div class="detail-content">
-            Bahasa stylesheet untuk mengatur tampilan halaman.
+            Bahasa stylesheet untuk mengatur warna, ukuran, jarak, dan layout.
         </div>
     </details>
 
     <details>
         <summary>Framework</summary>
         <div class="detail-content">
-            Kumpulan alat atau aturan siap pakai untuk membantu pengembangan.
-            Bootstrap merupakan framework CSS.
+            Kumpulan alat dan aturan siap pakai yang membantu pengembangan.
+            Bootstrap merupakan salah satu framework CSS.
         </div>
     </details>
 
     <details>
         <summary>JavaScript</summary>
         <div class="detail-content">
-            Bahasa pemrograman yang dapat merespons event dan mengubah
-            elemen halaman.
+            Bahasa pemrograman yang dapat merespons event dan memanipulasi DOM.
+        </div>
+    </details>
+
+    <details>
+        <summary>DOM</summary>
+        <div class="detail-content">
+            Representasi dokumen HTML yang dapat diakses dan diubah melalui JavaScript.
         </div>
     </details>
 
@@ -1064,17 +1073,30 @@ tampilkanBuku();</code></pre>
     </details>
 
     <details>
-        <summary>Fetch API</summary>
+        <summary>API</summary>
         <div class="detail-content">
-            Fitur JavaScript untuk meminta data dan menerima respons dari URL.
+            Antarmuka yang memungkinkan program berkomunikasi dengan program lain.
         </div>
     </details>
 
     <details>
-        <summary>DOM</summary>
+        <summary>CRUD</summary>
         <div class="detail-content">
-            Representasi dokumen HTML yang dapat diakses dan diubah melalui
-            JavaScript.
+            Empat operasi pengelolaan data: Create, Read, Update, dan Delete.
+        </div>
+    </details>
+
+    <details>
+        <summary>Session</summary>
+        <div class="detail-content">
+            Mekanisme server untuk mempertahankan informasi pengguna selama sesi.
+        </div>
+    </details>
+
+    <details>
+        <summary>Debugging</summary>
+        <div class="detail-content">
+            Proses mencari penyebab kesalahan dan memperbaikinya.
         </div>
     </details>
 </section>
@@ -1084,21 +1106,18 @@ tampilkanBuku();</code></pre>
     <h2>Kesimpulan</h2>
 
     <p>
-        Jobsheet 1–6 membahas dasar pengembangan website secara bertahap,
-        mulai dari struktur HTML, tampilan CSS dan Bootstrap, interaksi
-        JavaScript, hingga pembacaan data JSON melalui Fetch API.
-    </p>
-
-    <p>
-        Memahami fungsi setiap teknologi menjadi dasar untuk mengembangkan
-        aplikasi website yang lebih terstruktur dan mudah dipelihara.
+        Belajar pemrograman web bukan hanya menghafal sintaks. Kamu perlu
+        memahami tujuan kode, data yang diproses, dan hubungan antarfile.
+        Mulailah dari contoh sederhana, jalankan, lalu ubah satu bagian
+        pada satu waktu.
     </p>
 
     <div class="note">
-        <strong>Catatan</strong>
+        <strong>Catatan belajar</strong>
         <p>
-            Sesuaikan penjelasan dan contoh kode pada handbook ini dengan
-            isi modul praktikum yang benar-benar diberikan dosen.
+            Contoh pada handbook ini merupakan contoh konsep. Cocokkan
+            nama file, struktur folder, dan kode dengan modul praktikum
+            yang benar-benar digunakan pada setiap jobsheet.
         </p>
     </div>
 
@@ -1110,9 +1129,8 @@ tampilkanBuku();</code></pre>
 
 <footer class="footer">
     <p><strong>WEBLEARN</strong> · Handbook Dasar Pemrograman Web</p>
-    <p>Ringkasan pembelajaran Jobsheet 1–6</p>
+    <p>Panduan belajar Jobsheet 1–12</p>
 </footer>
 
 </body>
 </html>
-```
