@@ -143,6 +143,7 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 footer p {
@@ -180,10 +181,10 @@ body.auth-page .auth-footer {
 /* ================= FOOTER DASHBOARD ================= */
 /* Sisakan ruang untuk sidebar hanya pada layar desktop
    dan hanya jika halaman bukan halaman autentikasi. */
-@media (min-width: 701px) {
-    body:not(.auth-page) footer {
-        margin-left: 245px;
-        width: calc(100% - 245px);
+@media (max-width: 70px) {
+    .footer{
+        width: 100%;
+        margin: 0;
     }
 }
 

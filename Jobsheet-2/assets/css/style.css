@@ -168,6 +168,7 @@ form input, form select {
     border: 1px solid #cdd4da;
     border-radius: 4px;
     font-size: 1rem;
+    background-color: #e0dbda;
 }
 
 form button[type="submit"] {
@@ -186,8 +187,9 @@ form button[type="submit"]:hover {
 
 /* == Footer ==*/
 footer {
+    background-color: #5a2e25;
     text-align: center;
     padding: 1.25rem;
-    color: #b24f0d;
+    color: #ddad9c;
     font-size: 0.9rem;
 }
