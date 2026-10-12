@@ -52,6 +52,11 @@ $current_page = parse_url(
             📚 Mata Kuliah
         </a>
 
+        <a
+            href="/Jobsheet-8/matkul/tambah.php"
+            class="<?= $current_page == "/Jobsheet-8/matkul/tambah.php" ? "active" : "" ?>">
+            ➕ Tambah Mata Kuliah
+        </a>
 
         <a
             href="/Jobsheet-8/tentang/index.php"
